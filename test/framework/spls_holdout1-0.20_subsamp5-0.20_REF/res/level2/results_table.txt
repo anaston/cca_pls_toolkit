@@ -1,0 +1,2 @@
+split	correl	pval	nfeatx	nfeaty
+1	0.4750	0.1584	1	80

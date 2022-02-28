@@ -1,0 +1,1144 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/brain_icon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
+    
+    
+      
+        <title>Simulated data - CCA/PLS Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.82f3c0b9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generate-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CCA/PLS Toolkit" class="md-header__button md-logo" aria-label="CCA/PLS Toolkit" data-md-component="logo">
+      
+  <img src="../../assets/brain_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CCA/PLS Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Simulated data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/anaston/PLS_CCA_framework/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CCA_PLS_toolkit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CCA/PLS Toolkit" class="md-nav__button md-logo" aria-label="CCA/PLS Toolkit" data-md-component="logo">
+      
+  <img src="../../assets/brain_icon.png" alt="logo">
+
+    </a>
+    CCA/PLS Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/anaston/PLS_CCA_framework/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CCA_PLS_toolkit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/" class="md-nav__link">
+        Background
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/" class="md-nav__link">
+        Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualization/" class="md-nav__link">
+        Visualization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Defaults
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Defaults" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Defaults
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cfg/" class="md-nav__link">
+        cfg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../res/" class="md-nav__link">
+        res
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cfg_defaults/" class="md-nav__link">
+        cfg_defaults
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cleanup_files/" class="md-nav__link">
+        cleanup_files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generate_data/" class="md-nav__link">
+        generate_data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plot_paropt/" class="md-nav__link">
+        plot_paropt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plot_proj/" class="md-nav__link">
+        plot_proj
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plot_weight/" class="md-nav__link">
+        plot_weight
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../res_defaults/" class="md-nav__link">
+        res_defaults
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../set_path/" class="md-nav__link">
+        set_path
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../update_dir/" class="md-nav__link">
+        update_dir
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Simulated data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Simulated data
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generate-data" class="md-nav__link">
+    Generate data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-folder" class="md-nav__link">
+    Project folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#machine" class="md-nav__link">
+    Machine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framework" class="md-nav__link">
+    Framework
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deflation" class="md-nav__link">
+    Deflation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    Environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-inference" class="md-nav__link">
+    Statistical inference
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-analysis" class="md-nav__link">
+    Run analysis
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    Visualization
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plot-grid-search-results" class="md-nav__link">
+    Plot grid search results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot-projections" class="md-nav__link">
+    Plot projections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot-weights" class="md-nav__link">
+    Plot weights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_smri/" class="md-nav__link">
+        Structural MRI data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_fmri/" class="md-nav__link">
+        Functional MRI data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../full_demo/" class="md-nav__link">
+        Full Demo
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generate-data" class="md-nav__link">
+    Generate data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-folder" class="md-nav__link">
+    Project folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#machine" class="md-nav__link">
+    Machine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framework" class="md-nav__link">
+    Framework
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deflation" class="md-nav__link">
+    Deflation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    Environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-inference" class="md-nav__link">
+    Statistical inference
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-analysis" class="md-nav__link">
+    Run analysis
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    Visualization
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plot-grid-search-results" class="md-nav__link">
+    Plot grid search results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot-projections" class="md-nav__link">
+    Plot projections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot-weights" class="md-nav__link">
+    Plot weights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/anaston/PLS_CCA_framework/edit/master/docs/mfiles/example_simulation.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>Simulated data</h1>
+
+<p><span style="font-size:2em;"><strong>example_simulation</strong></span></p>
+<p>This is a demo for simulated data. We will discuss step by step how to 
+generate data, run an analysis as well as how to visualize the results.
+Copy and paste the code chunks into a function to create your own 
+experiment or copy the function from the <code>examples</code> folder of the
+toolkit.</p>
+<h2 id="generate-data">Generate data</h2>
+<p>First, we generate the simulated data using the 
+<a href="../generate_data"><code>generate_data</code></a> function of the toolkit. We 
+will use 1000 examples and 100 features in both data modalities. We set 
+the signal to be sparse with 10% of the features in each modality that 
+are relevant to capture the association across modalities. The noise 
+parameter of the model is set to 1. For further details on the generative 
+model, see Mihalik et al. in review.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">%----- Generate data</span><span class="w"></span>
+
+<span class="c">% Data folder</span><span class="w"></span>
+<span class="n">data_dir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fullfile</span><span class="p">(</span><span class="nb">fileparts</span><span class="p">(</span><span class="nb">mfilename</span><span class="p">(</span><span class="s">&#39;fullpath&#39;</span><span class="p">)),</span><span class="w"> </span><span class="s">&#39;example_simulation&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;data&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">~</span><span class="nb">exist</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;X.mat&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;file&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="o">~</span><span class="nb">exist</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Y.mat&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;file&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">% Generate simulated data</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">wX</span><span class="p">,</span><span class="w"> </span><span class="n">wY</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">generate_data</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">% Save simulated data and true model weights</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">~</span><span class="nb">isfolder</span><span class="p">(</span><span class="s">&#39;data_dir&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="nb">mkdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">        </span><span class="nb">save</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;X.mat&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;X&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nb">save</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Y.mat&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;Y&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nb">save</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;wX.mat&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;wX&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nb">save</span><span class="p">(</span><span class="nb">fullfile</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;wY.mat&#39;</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;wY&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</code></pre></div>
+<h2 id="analysis">Analysis</h2>
+<p>Now we are ready to set up the analysis. We start by running <code>set_path</code> 
+to add the necessary paths of the toolkit to your MATLAB path.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">%----- Analysis</span><span class="w"></span>
+
+<span class="c">% Set path for analysis</span><span class="w"></span>
+<span class="n">set_path</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<h3 id="project-folder">Project folder</h3>
+<p>Next, we specify the folder to our project. Make sure to specify the 
+correct path. We recommend to use a full path, but a relative path should 
+also work.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Project folder</span><span class="w"></span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">dir</span><span class="p">.</span><span class="n">project</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fullfile</span><span class="p">(</span><span class="nb">fileparts</span><span class="p">(</span><span class="n">data_dir</span><span class="p">));</span><span class="w"></span>
+</code></pre></div>
+<h3 id="machine">Machine</h3>
+<p>Now, we configure the CCA/PLS model we would like to use. We set 
+<code>machine.name</code> to <code>spls</code> for <a href="../../background/#sparse-pls-spls">Sparse PLS</a>.
+To select the best hyperparameter (L1 regularization for SPLS), we will use 
+generalizability (measured as average out-of-sample corretion on the 
+validation sets) and stability (measured as the avarage similarity of 
+weights across the inner training sets) as a joint optimization criterion. 
+This is set by <code>machine.param.crit = correl+simwxy</code>. For further details 
+on this criterion, see <a href="https://doi.org/10.1016/j.biopsych.2019.12.001">Mihalik et al. (2020)</a></p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Machine settings</span><span class="w"></span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">machine</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;spls&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">machine</span><span class="p">.</span><span class="n">param</span><span class="p">.</span><span class="n">crit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;correl+simwxy&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>For more information on the CCA/PLS models and the hyperparameter choices,
+see <a href="../../cfg/#machine">here</a>.</p>
+<h3 id="framework">Framework</h3>
+<p>Next, we set the framework name to <code>holdout</code> and the number of outer data 
+splits to 1 to perform a single holdout approach.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Framework settings</span><span class="w"></span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;holdout&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">split</span><span class="p">.</span><span class="n">nout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>For further details on the framework choices, see <a href="../../cfg/#frwork">here</a>.</p>
+<h3 id="deflation">Deflation</h3>
+<p>Next, we set the deflation of SPLS. We will use PLS-mode A deflation.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Deflation settings</span><span class="w"></span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">defl</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;pls-modeA&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>For further details on the deflation choices, see <a href="../../cfg/#defl">here</a>.</p>
+<h3 id="environment">Environment</h3>
+<p>Next, we set the computational environment for the toolkit. As our data is
+relatively low-dimensional (i.e., number of features is not too high)
+SPLS will run quiclky locally on our computer.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Environment settings</span><span class="w"></span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">comp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;local&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>For further details on the environmental settings, see <a href="../../cfg/#env">here</a>.</p>
+<h3 id="statistical-inference">Statistical inference</h3>
+<p>Finally, we need to define how the statistical inference is performed. 
+For quicker results, we wet the number of permutations to 100, however, 
+we recommend using at least 1000 permutations in general. </p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Statistical inference settings</span><span class="w"></span>
+<span class="n">cfg</span><span class="p">.</span><span class="n">stat</span><span class="p">.</span><span class="n">nperm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>For further details on the statistical inference, see <a href="../../cfg/#stat">here</a>.</p>
+<h3 id="run-analysis">Run analysis</h3>
+<p>To run the analysis, we simply update our <code>cfg</code> structure to add all 
+necessary default values that we did not explicitly define and then run 
+the <code>main</code> function. After the analysis, we clean up all the duplicate
+and intermediate files to save disc space. Note that if you run the
+analysis in a cluster environment then you will need to comment out
+the last line and run it manually once the analysis is completed as the
+<code>cleanup_files</code> function does not work in a parallel environment.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Update cfg with defaults</span><span class="w"></span>
+<span class="n">cfg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cfg_defaults</span><span class="p">(</span><span class="n">cfg</span><span class="p">);</span><span class="w"></span>
+
+<span class="c">% Run analysis</span><span class="w"></span>
+<span class="n">main</span><span class="p">(</span><span class="n">cfg</span><span class="p">);</span><span class="w"></span>
+
+<span class="c">% Clean up analysis files to save disc space</span><span class="w"></span>
+<span class="n">cleanup_files</span><span class="p">(</span><span class="n">cfg</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<h2 id="visualization">Visualization</h2>
+<p>Now that we have run our first analysis, let's plot some of the results. 
+Before we can do any plotting, we need to make sure that we have called 
+<code>set_path('plot')</code> to add the plotting folder. Then we load the <code>res</code>
+structure.</p>
+<p>In general, we advise you to plot your results on a local computer as it 
+is often cumbersome and slow in a cluster environment. If you move your 
+results from a cluster to a local computer, you need update the paths in 
+your <code>cfg*.mat</code> and <code>res*.mat</code> files using <code>update_dir</code>. This should be 
+called once the <code>res</code> structure is loaded either manually or by <code>res_defaults</code>.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">%----- Visualization</span><span class="w"></span>
+
+<span class="c">% Set path for plotting</span><span class="w"></span>
+<span class="n">set_path</span><span class="p">(</span><span class="s">&#39;plot&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="c">% Load res</span><span class="w"></span>
+<span class="n">res</span><span class="p">.</span><span class="n">dir</span><span class="p">.</span><span class="n">frwork</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cfg</span><span class="p">.</span><span class="n">dir</span><span class="p">.</span><span class="n">frwork</span><span class="p">;</span><span class="w"></span>
+<span class="n">res</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">res_defaults</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;load&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<h3 id="plot-grid-search-results">Plot grid search results</h3>
+<p>First, we plot the grid search results of the hyperparameter
+optimization. As first argument, we need to pass the <code>res</code> structure. 
+Then we specify the data modality as string. The last argument is a 
+varargin to define an optional number of metrics. Each metric will be 
+plotted as a function of the hyperparameter grid and in a separate
+subplot. In this example, we plot the test (out-of-sample) correlation 
+and the joint generalizability-stability criterion (<code>dist2</code>), which was 
+used for selecting the best hyperparameter. For more details, see
+<a href="https://doi.org/10.1016/j.biopsych.2019.12.001">Mihalik et al. (2020)</a></p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot hyperparameter surface for grid search results</span><span class="w"></span>
+<span class="n">plot_paropt</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;correl&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;simwx&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;simwy&#39;</span><span class="p">},</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;gen.figure.Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">500</span><span class="w"> </span><span class="mi">600</span><span class="w"> </span><span class="mi">1200</span><span class="w"> </span><span class="mi">400</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;gen.axes.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;gen.axes.XScale&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;log&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.axes.YScale&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;log&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="demo_simul_grid" src="../../figures/example_simul_paropt.png" /></p>
+<h3 id="plot-projections">Plot projections</h3>
+<p>To plot the data projections (or latent variables) that has been 
+learnt by the model, simply run <code>plot_proj</code>. As first argument, we need 
+to pass the <code>res</code> structure, in which we define a custom <code>xlabel</code> and 
+<code>ylabel</code>. Then, we specify the data modalities as cell array and the level 
+of associative effect. In this example, we plot the projections of <code>X</code> and 
+<code>Y</code> for the first associative effect. We set the fourth input parameter to 
+'osplit' so that the training and test data of the outer split will be used 
+for the plot. The following argument defines the outer data split we want 
+to use (in this demo, we have only one split). We use the second to last 
+argument to specify the colour-coding of the data using the training and 
+test data as groups (<code>teid</code>). Finally, we specify the low-level 
+function that will plot the results. In this case it is <code>plot_proj_2d_group</code>.
+Please see the documentation of <a href="../mfiles/plot_proj/">plot_proj</a> for more details.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot data projections</span><span class="w"></span>
+<span class="n">plot_proj</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;X&#39;</span><span class="w"> </span><span class="s">&#39;Y&#39;</span><span class="p">},</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;osplit&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;training+test&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;2d_group&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.axes.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;gen.legend.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.legend.Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthWest&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="c"> </span><span class="w"></span>
+<span class="s">&#39;proj.scatter.SizeData&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;proj.scatter.MarkerEdgeColor&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;proj.scatter.MarkerFaceColor&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.9</span><span class="p">;</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.3</span><span class="p">],</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;proj.xlabel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Modality 1 latent variable&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;proj.ylabel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Modality 2 latent variable&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="demo_simul_proj" src="../../figures/example_simul_plot.png" /></p>
+<h3 id="plot-weights">Plot weights</h3>
+<p>Plotting model weights heavily depends on the kind of data that has been 
+used in the analysis. In case of our simulated data, we are interested
+if the model can recover the weights that were used for generating the
+data (these true model weights were automatically saved in our <code>data</code> 
+folder as <code>wx.mat</code> and <code>wy.mat</code>). We we use a stem plot with the recovered 
+weights in blue, and the true weights in red. Again, we use a costum
+<code>xlabel</code> in the figures. As first argument, we need to pass the <code>res</code> 
+function, in which we define our custom <code>xlabel</code> for the figures. Next, 
+we specify the data modality and the type of the modality as strings. In 
+this example, we set these to <code>X</code> or <code>Y</code> and <code>simul</code>. The following 
+argument defines the outer data split we want to use. Finally, we specify 
+the low-level function that will plot the results. In this example, it 
+will be <code>plot_weight_stem</code>. Please see the documentation of 
+<a href="../mfiles/plot_weight">plot_weight</a> for more details. 
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot modality 1 weights as stem plot</span><span class="w"></span>
+<span class="n">plot_weight</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;X&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;simul&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;stem&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;gen.axes.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.legend.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;gen.axes.YLim&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="w"> </span><span class="mf">1.2</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;simul.weight.norm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;minmax&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;simul.xlabel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Modality 1 variables&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></p>
+<p><img alt="demo_simul_wx" src="../../figures/example_simul_weight_stemx.png" /></p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot modality 2 weights as stem plot</span><span class="w"></span>
+<span class="n">plot_weight</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Y&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;simul&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;stem&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;gen.axes.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.legend.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;gen.axes.YLim&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="w"> </span><span class="mf">1.2</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;simul.weight.norm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;minmax&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="s">&#39;simul.xlabel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Modality 2 variables&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="demo_simul_wy" src="../../figures/example_simul_weight_stemy.png" /></p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../update_dir/" class="md-footer__link md-footer__link--prev" aria-label="Previous: update_dir" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              update_dir
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../example_smri/" class="md-footer__link md-footer__link--next" aria-label="Next: Structural MRI data" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Structural MRI data
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.cefbb252.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.17f42bbf.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

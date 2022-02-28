@@ -1,0 +1,69 @@
+# Project information
+site_name: CCA/PLS Toolkit
+repo_name: 'CCA_PLS_toolkit'
+repo_url: 'https://github.com/anaston/PLS_CCA_framework/'
+
+# Plugins
+plugins:
+  - search
+
+# Theme configuration
+theme: 
+  name: 'material'
+  palette:
+    primary: 'teal'
+    accent: 'teal'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  icon:
+    repo: fontawesome/brands/github
+  logo: assets/brain_icon.png
+  favicon: assets/brain_icon.png
+
+# Latex
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# extensions
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - codehilite
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      auto_title: true
+  - admonition
+  - def_list
+  - attr_list
+
+
+# Site structure
+nav: 
+- Home: 'index.md'
+- Background: 'background.md'
+- Getting Started: 'getting_started.md'
+- Analysis: 'analysis.md'
+- Visualization: 'visualization.md'
+- Defaults:
+  - cfg: 'cfg.md' 
+  - res: 'res.md' 
+- Functions:
+  - cfg_defaults: 'mfiles/cfg_defaults.md'
+  - cleanup_files: 'mfiles/cleanup_files.md'
+  - generate_data: 'mfiles/generate_data.md'
+  - plot_paropt: 'mfiles/plot_paropt.md'
+  - plot_proj: 'mfiles/plot_proj.md'
+  - plot_weight: 'mfiles/plot_weight.md'
+  - res_defaults: 'mfiles/res_defaults.md'
+  - set_path: 'mfiles/set_path.md'
+  - update_dir: 'mfiles/update_dir.md'
+- Examples:
+  - Simulated data: 'mfiles/example_simulation.md'
+  - Structural MRI data: 'mfiles/example_smri.md'
+  - Functional MRI data: 'mfiles/example_fmri.md'
+- Full Demo: 'full_demo.md'
+

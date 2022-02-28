@@ -1,0 +1,950 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/brain_icon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
+    
+    
+      
+        <title>Getting Started - CCA/PLS Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.82f3c0b9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9204c3b2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CCA/PLS Toolkit" class="md-header__button md-logo" aria-label="CCA/PLS Toolkit" data-md-component="logo">
+      
+  <img src="../assets/brain_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CCA/PLS Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting Started
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/anaston/PLS_CCA_framework/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CCA_PLS_toolkit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CCA/PLS Toolkit" class="md-nav__button md-logo" aria-label="CCA/PLS Toolkit" data-md-component="logo">
+      
+  <img src="../assets/brain_icon.png" alt="logo">
+
+    </a>
+    CCA/PLS Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/anaston/PLS_CCA_framework/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CCA_PLS_toolkit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background/" class="md-nav__link">
+        Background
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Getting Started
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toolbox-overview" class="md-nav__link">
+    Toolbox overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Toolbox overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    Visualization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-on-a-cluster" class="md-nav__link">
+    Running on a cluster
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analysis/" class="md-nav__link">
+        Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualization/" class="md-nav__link">
+        Visualization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Defaults
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Defaults" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Defaults
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cfg/" class="md-nav__link">
+        cfg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../res/" class="md-nav__link">
+        res
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/cfg_defaults/" class="md-nav__link">
+        cfg_defaults
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/cleanup_files/" class="md-nav__link">
+        cleanup_files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/generate_data/" class="md-nav__link">
+        generate_data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/plot_paropt/" class="md-nav__link">
+        plot_paropt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/plot_proj/" class="md-nav__link">
+        plot_proj
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/plot_weight/" class="md-nav__link">
+        plot_weight
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/res_defaults/" class="md-nav__link">
+        res_defaults
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/set_path/" class="md-nav__link">
+        set_path
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/update_dir/" class="md-nav__link">
+        update_dir
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/example_simulation/" class="md-nav__link">
+        Simulated data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/example_smri/" class="md-nav__link">
+        Structural MRI data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/example_fmri/" class="md-nav__link">
+        Functional MRI data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../full_demo/" class="md-nav__link">
+        Full Demo
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toolbox-overview" class="md-nav__link">
+    Toolbox overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Toolbox overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    Visualization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-on-a-cluster" class="md-nav__link">
+    Running on a cluster
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/anaston/PLS_CCA_framework/edit/master/docs/getting_started.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>Getting Started</h1>
+
+<h2 id="installation">Installation</h2>
+<p>To install the CCA/PLS Toolkit, clone the repository from Github using the following command:</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>git clone https://github.com/anaston/PLS_CCA_framework
+</code></pre></div>
+<p>After the toolkit is downloaded, go to the folder containing the toolkit and open MATLAB. In general, we advise you to run all commands from this toolkit folder.</p>
+<p>To initialize the toolkit, run the following line in the MATLAB command window:</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="n">set_path</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<h2 id="dependencies">Dependencies</h2>
+<p>The neuroimaging community has great visualization and other tools, therefore we decided to use some of these available tools for specific purposes in the toolkit. Depending on the analysis and plots you would like to make you will need to download some of the toolboxes below. We recommend two ways of adding toolboxes to your path:</p>
+<ul>
+<li>you can just add the toolboxes to the path in their current location if you already have them on your computer,</li>
+<li>you can add the toolboxes in a dedicated folder (called <code>external</code>) inside the toolkit.</li>
+</ul>
+<p>For easier management of the dependencies, all toolboxes are stored in a dedicated folder within the toolkit. To create this folder, run the following line in the MATLAB command window:</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="nb">mkdir</span><span class="w"> </span><span class="n">external</span><span class="w"></span>
+</code></pre></div>
+<p>Importantly, this <code>external</code> folder (and its content) is not added to <code>.gitignore</code> and thus it is not version controlled by git. On the one side, this is to accomodate the specific needs of users and only to use toolboxes that are essential for their specific analyses and plots. On the other side, this is to avoid that the toolkit gets unnecessarily large due to potentially large external toolboxes.</p>
+<p>Here is a complete list of toolboxes that you might need for using the toolkit:</p>
+<ul>
+<li><a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM">PALM</a> (<strong>Permutation Analysis of Linear Models</strong>, used for permutation testing)</li>
+<li><a href="https://www.fil.ion.ucl.ac.uk/spm/software/download/">SPM</a> (<strong>Statistical Parametric Mapping</strong>, used for opening files and reading/writing <code>.nii</code> files)</li>
+<li><a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a> (used for brain data visualization)</li>
+<li><a href="https://www.gin.cnrs.fr/en/tools/aal/">AAL</a> (<strong>Automated Anatomical Labelling</strong>, used for region-of-interest (ROI) analyses)</li>
+</ul>
+<p>To know which dependencies you will need for your specific analysis, please see the <a href="../analysis/#dependencies">Analysis</a> and <a href="../visualization/#dependencies">Visualization</a> pages.</p>
+<p>Below, an example is provided to illustrate how to add toolboxes to the toolkit using PALM. For this, download PALM manually by the provided link, copy the <code>PALM</code> folder into your <code>external</code> folder, then finally add PALM to the MATLAB path using the following line in the MATLAB command window:</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="n">set_path</span><span class="p">(</span><span class="s">&#39;PALM&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<h2 id="toolbox-overview">Toolbox overview</h2>
+<p>The toolkit consists of two main parts:</p>
+<ol>
+<li>Analysis</li>
+<li>Visualization</li>
+</ol>
+<p>The reason behind this division is that whereas an analysis can be run on a cluster without a need for a graphical output, the visualization usually takes place on a local computer with a need for a graphical output. Of course, if both the analysis and visualization are done on a local computer, the two can be easily combined as demonstrated in the examples.</p>
+<h3 id="analysis">Analysis</h3>
+<p>The figure below illustrates the inputs and outputs of each analysis.</p>
+<p align="center">
+   <img src="../figures/overview_analysis.png" width="531" height="71">
+</p>
+
+<p>The <strong>main inputs</strong> of the analysis are:</p>
+<ul>
+<li><code>cfg</code> structure, which is a MATLAB variable created by the user for the configuration of all the analysis settings,</li>
+<li><code>X.mat</code> and <code>Y.mat</code> files including the two modalities of input data (i.e., <span class="arithmatex">\(\mathbf{X}\)</span> and <span class="arithmatex">\(\mathbf{Y}\)</span> matrices).</li>
+</ul>
+<p>Other input files can be also provided, for instance, <code>C.mat</code> file including the confounding variables of the analysis and <code>ÈB.mat</code> file including the (exchangeability) block structure of the data. </p>
+<p>For details on the <code>cfg</code> structure and the input data files, see <a href="../analysis">Analysis</a>.</p>
+<p>The <strong>main outputs</strong> of the analysis are:</p>
+<ul>
+<li><code>results_table.txt</code> including the summary of the results,</li>
+<li>various <code>.mat</code> files including, for instance, information about the data splits, the results of hyperparameter optimization and the trained models (for details, see below).</li>
+</ul>
+<p>Next, we discuss the folder structure of your analysis and list the specific folders where the main input and output files are stored.</p>
+<p align="center">
+   <img src="../figures/folders.png" width="331" height="449">
+</p>
+
+<p>As illustrated in the figure above, a project consists of a project folder with two subfolders:</p>
+<ul>
+<li>a <code>data</code> folder including the input data files,</li>
+<li>a <code>framework</code> folder including the results of the analyses with each analysis in a specific framework folder.</li>
+</ul>
+<p>We need to create the project and <code>data</code> folders manually and place our input data files within the <code>data</code> folder (illustrated by a red box in the figure). To generate simulated data, see the <a href="../mfiles/generate_data">generate_data</a> function.</p>
+<p>All the other folders and output files will be created by the toolkit during analysis. Our specific framework folder will be generated by the toolkit based on your CCA/PLS model and framework choice. For instance, an SPLS analysis with a single holdout set (20% of the data) and 10 validation sets (20% of the optimization set) will generate the <code>spls_holdout1-0.20_subsamp10-0.20</code> folder. If you want to specify a custom name for this analysis, you can change <code>cfg.frwork.flag</code> from its default empty value, which will then append a flag to your specific framwork name. For instance, <code>cfg.frwork.flag = '_TEST'</code> will create the <code>spls_holdout1-0.20_subsamp10-0.20_TEST</code> folder. </p>
+<p>Each analysis will contain the following output files in the specific framework folder:</p>
+<ul>
+<li><code>cfg*.mat</code> file including the <code>cfg</code> structure you created and filled up with other necessary default by <a href="../mfiles/cfg_defaults"><code>cfg_defaults</code></a>, </li>
+<li><code>outmat*.mat</code> file including the training and test indexes of the outer splits of the data (i.e., optimization and holdout sets), </li>
+<li><code>inmat*.mat</code> file including the training and test indexes of the inner splits of the data (i.e., inner training and validation sets).</li>
+</ul>
+<p>The other output files are stored in specific folders with each folder having one or multiple levels of results, where each level stands for an associative effect (e.g., first associative effect in folder <code>level1</code>, second associative effect in folder <code>level2</code>):</p>
+<ul>
+<li><code>grid</code> folder including the results of the hyperparameter optimization in <code>grid*.mat</code>files,</li>
+<li><code>load</code> folder with a <code>preproc</code> folder including the preprocessed (e.g., z-scored) data in <code>preproc*.mat</code> files and an <code>svd</code> folder including the Singular Value Decomposition (SVD) of the preprocessed data in <code>*svd*.mat</code> files (SVD is needed for the computational efficiency of the toolkit),</li>
+<li><code>perm</code> folder including the results of the permutation testing in <code>perm*.mat</code> files, </li>
+<li><code>res</code> folder including the best (or fixed) hyperparameters in <code>param*.mat</code> file, the results of the main trained models in <code>model*.mat</code> file, additional results in <code>res*.mat</code> file and the summary of the results in <code>results_table.txt</code> file.</li>
+</ul>
+<p>For additional details on the output data files, see <a href="../analysis">Analysis</a>.</p>
+<h3 id="visualization">Visualization</h3>
+<p>The figure below illustrates the inputs and outputs of visualizing the results.</p>
+<p align="center">
+   <img src="../figures/overview_visualization.png" width="489" height="66">
+</p>
+
+<p>The <strong>main inputs</strong> of the visualization are:</p>
+<ul>
+<li><code>res</code> structure, which is a MATLAB variable loaded from <code>res*.mat</code> and appended with settings for visualization,</li>
+<li><code>.mat</code> files either as outputs of the analysis or other files including data (e.g., <code>mask.mat</code> including a mask for connectivity data) or other settings for visualization (e.g., <code>options.mat</code> including <a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a> settings), </li>
+<li><code>.csv</code> files, which are label files including information about the variables in your <span class="arithmatex">\(\mathbf{X}\)</span> and <span class="arithmatex">\(\mathbf{Y}\)</span> matrices, </li>
+<li><code>.nv</code> file, which is a surface mesh file in <a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a> used as a template to overlay your brain weights on, </li>
+<li><code>.nii</code> files, which can be an atlas file defining regions of interest (ROI) in the brain or a mask file for voxel-wise structural MRI data.  </li>
+</ul>
+<p>The <strong>main outputs</strong> of the visualization are:</p>
+<ul>
+<li>images of figures, in any requested standard file format, e.g., <code>.fig</code>, <code>.png</code>, <code>.svg</code>, </li>
+<li><code>.csv</code> files including information about the plotted results (e.g., ordered model weights).</li>
+</ul>
+<p>For additional details on the <code>res</code> structure and the other input and output data files of visualization, see <a href="../visualization">Visualization</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>We also highly recommend that you go through the defaults of <a href="../cfg">cfg</a> and <a href="../res">res</a> so that you understand thoroughly the analysis and visualization settings.</p>
+</div>
+<p>You can find a detailed documentation of each high-level function of the toolkit under the main menu Functions, for instance, see <a href="../mfiles/cfg_defaults">cfg_defaults</a>.</p>
+<p>Finally, if you want to get started and run an experiment on your local computer, see <a href="../full_demo">Demo</a> for a complete analysis and visualization. In addition, we provide three simple examples to generate and analyse <a href="../mfiles/demo_simulation">simulated data</a>, <a href="../mfiles/demo_smri">simulated structural MRI data</a>, and <a href="../mfiles/demo_fmri">simulated fMRI data</a>. </p>
+<p>Next, we briefly discuss how to run an analysis on a cluster.</p>
+<h2 id="running-on-a-cluster">Running on a cluster</h2>
+<p>The toolkit can be run in multiple MATLAB instances, e.g., in a cluster environment. If you use <strong>SGE</strong> or <strong>SLURM</strong> scheduling systems, you simply need to send the same analysis to different nodes and the toolkit will take care of the rest. If you use a different scheduling system then a one-line modification of the <code>cfg_defaults</code> function is needed to account for your scheduling system and you are ready to go. Feel free to get in touch with us to help you set this up. </p>
+<p>Here is a brief description of what happens under the hood when the toolkit is running on different MATLAB instances. Although MATLAB can load the same <code>.mat</code> file from different MATLAB instances, it cannot save to the same <code>.mat</code> file . To work around this, the toolkit appends the unique ID of the computing node/job at the end of each <code>.mat</code> file (in a local environment, the ID is set to <code>_1</code> by default), so even if different jobs are saving the same content simultaneously, they will do it into different files. In addition, there are a handful of wrapper functions to save, search and load these <code>.mat</code> files and the following mechanisms are in place to share computational cost:</p>
+<ul>
+<li>jobs save computations to <code>.mat</code> files regularly on disc,</li>
+<li>there is a random seed before each time consuming operation in the toolkit (e.g., grid search and permutation testing), hence different jobs will most likely perform different computations,</li>
+<li>jobs can load <code>.mat</code> files computed by other jobs,</li>
+<li>jobs regularly check what <code>.mat</code> files are available and they only start a new computation if that has not yet been performed by another job,</li>
+<li>if two MATLAB instances are saving the same computation to a <code>.mat</code> file then they will write to different files due to their different job ID-s.</li>
+</ul>
+<p>You might ask: doesn't this computational strategy create a lot of intermediate and some duplicate files? Indeed, that is the case, however, there is a <a href="../mfiles/cleanup_files"><code>cleanup_files</code></a> function that allows to remove all the intermediate and duplicate files after your analysis is done. Do not forget to use this as otherwise you might exceed your disc space or have difficulties to move your results around, e.g., from a cluster to a local computer.</p>
+<p>An extra benefit of this computational strategy is that in case your analysis is aborted (e.g., you run out of allocated time on a cluster), you can always restart the same analysis and it will catch up with the computations where it was aborted.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../background/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Background" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Background
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Analysis" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Analysis
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.cefbb252.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.17f42bbf.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

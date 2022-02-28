@@ -1,0 +1,1191 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/brain_icon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
+    
+    
+      
+        <title>Visualization - CCA/PLS Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.82f3c0b9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9204c3b2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CCA/PLS Toolkit" class="md-header__button md-logo" aria-label="CCA/PLS Toolkit" data-md-component="logo">
+      
+  <img src="../assets/brain_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CCA/PLS Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Visualization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/anaston/PLS_CCA_framework/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CCA_PLS_toolkit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CCA/PLS Toolkit" class="md-nav__button md-logo" aria-label="CCA/PLS Toolkit" data-md-component="logo">
+      
+  <img src="../assets/brain_icon.png" alt="logo">
+
+    </a>
+    CCA/PLS Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/anaston/PLS_CCA_framework/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CCA_PLS_toolkit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background/" class="md-nav__link">
+        Background
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analysis/" class="md-nav__link">
+        Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Visualization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Visualization
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-for-plotting" class="md-nav__link">
+    Configuration for plotting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projections" class="md-nav__link">
+    Projections
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weights" class="md-nav__link">
+    Weights
+  </a>
+  
+    <nav class="md-nav" aria-label="Weights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modality-independent" class="md-nav__link">
+    Modality independent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behaviour" class="md-nav__link">
+    Behaviour
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brain" class="md-nav__link">
+    Brain
+  </a>
+  
+    <nav class="md-nav" aria-label="Brain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voxel-wise-smri" class="md-nav__link">
+    Voxel-wise sMRI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roi-wise-smri" class="md-nav__link">
+    ROI-wise sMRI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmri-connectivity-edges" class="md-nav__link">
+    fMRI connectivity edges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmri-connectivity-nodes" class="md-nav__link">
+    fMRI connectivity nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmri-connectivity-modules" class="md-nav__link">
+    fMRI connectivity modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameters" class="md-nav__link">
+    Hyperparameters
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Defaults
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Defaults" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Defaults
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cfg/" class="md-nav__link">
+        cfg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../res/" class="md-nav__link">
+        res
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/cfg_defaults/" class="md-nav__link">
+        cfg_defaults
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/cleanup_files/" class="md-nav__link">
+        cleanup_files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/generate_data/" class="md-nav__link">
+        generate_data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/plot_paropt/" class="md-nav__link">
+        plot_paropt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/plot_proj/" class="md-nav__link">
+        plot_proj
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/plot_weight/" class="md-nav__link">
+        plot_weight
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/res_defaults/" class="md-nav__link">
+        res_defaults
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/set_path/" class="md-nav__link">
+        set_path
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/update_dir/" class="md-nav__link">
+        update_dir
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/example_simulation/" class="md-nav__link">
+        Simulated data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/example_smri/" class="md-nav__link">
+        Structural MRI data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/example_fmri/" class="md-nav__link">
+        Functional MRI data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../full_demo/" class="md-nav__link">
+        Full Demo
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-for-plotting" class="md-nav__link">
+    Configuration for plotting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projections" class="md-nav__link">
+    Projections
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weights" class="md-nav__link">
+    Weights
+  </a>
+  
+    <nav class="md-nav" aria-label="Weights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modality-independent" class="md-nav__link">
+    Modality independent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behaviour" class="md-nav__link">
+    Behaviour
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brain" class="md-nav__link">
+    Brain
+  </a>
+  
+    <nav class="md-nav" aria-label="Brain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voxel-wise-smri" class="md-nav__link">
+    Voxel-wise sMRI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roi-wise-smri" class="md-nav__link">
+    ROI-wise sMRI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmri-connectivity-edges" class="md-nav__link">
+    fMRI connectivity edges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmri-connectivity-nodes" class="md-nav__link">
+    fMRI connectivity nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmri-connectivity-modules" class="md-nav__link">
+    fMRI connectivity modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameters" class="md-nav__link">
+    Hyperparameters
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/anaston/PLS_CCA_framework/edit/master/docs/visualization.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>Visualization</h1>
+
+<div class="admonition info">
+<p class="admonition-title">Dependencies</p>
+<p>The visualization functions can have multiple dependencies.</p>
+<p>In general, if you want to use an interactive file selection, (i.e., pop-up dialog box to choose input files when needed), you need <a href="https://www.fil.ion.ucl.ac.uk/spm/software/download/">SPM</a>. You also need SPM if you work with a mask or an atlas. For details on these, please see below.</p>
+<p>If you want to plot brain weights on a glass brain, you need <a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a>. We use BrainNet Viewer in the toolkit for plotting structural MRI weights either at the voxel or ROI level as well as fMRI connectivity weights either at the edge level or summarized by nodes. We suggest that you manually edit your preferred settings in the BrainNet Viewer GUI at first usage and save these options as <code>otions.mat</code> then the toolkit will be able to automatically set your configurations for the BrainNet figure in successsive plots.</p>
+</div>
+<h2 id="overview">Overview</h2>
+<p>There are three high-level functions to visualize your results:</p>
+<ol>
+<li><a href="../mfiles/plot_proj"><code>plot_proj</code></a>: it plots the projections (or latent variables) of the data for an associative effect in a <a href="../mfiles/plot_proj/#simple-plots">simple plot</a> or for multiple associative effects in a <a href="../mfiles/plot_proj/#multi-level-plots">multi-level plot</a>. It can plot training and/or test sets of specific data splits. You can colour-code the subjects in the figure by groups or a continuous variable.</li>
+<li><a href="../mfiles/plot_weight"><code>plot_weight</code></a>: it plots the model weights in specific formats. You can plot behavioural weights using text, vertical or horizontal bar plots. The brain weights can be plotted on a glass brain using <a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a> either as a map for voxel-level weights, as nodes for region-level weights and summarized connectivity weights or as edges for connectivity weights. You can also summarize connectivity weights as within and between-module connectivities.</li>
+<li><a href="../mfiles/plot_paropt"><code>plot_paropt</code></a>: it plots the grid search results of the hyperparameter optimization and it is a useful tool for diagnostics. It can visualize each metric in <code>cfg.machine.metric</code> as a function of hyperparameters irrespectively whether the requested metric was used as criterion for hyperparameter selection or not. Each metric is plotted in a separate subplot.</li>
+</ol>
+<p>These high-level functions will call low-level functions for a specific variation of a plot. A full list of high- and low-level plotting functions is illustrated in the following figure.</p>
+<p align="center">
+   <img src="../figures/functions.png" width="425" height="378">
+</p>
+
+<p>The low-level functions are specified by the <code>func</code> argument of the high-level functions. For instance:</p>
+<ul>
+<li>to use the <code>plot_proj_2d_group</code> function, you need to call <code>plot_proj</code> with a <code>2d_group</code> argument,</li>
+<li>to use the <code>plot_weight_behav_horz</code> function, you need to call <code>plot_weight</code> with a <code>behav_horz</code> argument.</li>
+</ul>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot projections</span><span class="w"></span>
+<span class="n">plot_proj</span><span class="p">(</span><span class="k">...</span><span class="c">, &#39;2d_group&#39;)</span><span class="w"></span>
+
+<span class="c">% Plot weights</span><span class="w"></span>
+<span class="n">plot_weight</span><span class="p">(</span><span class="k">...</span><span class="c">, &#39;behav_horz&#39;)</span><span class="w"></span>
+</code></pre></div>
+<p>For a more detailed description of the high- and low-level functions, see the sections below.</p>
+<h2 id="configuration-for-plotting">Configuration for plotting</h2>
+<p>The main input of the visualization is the <code>res</code> structure including all the settings for your visualization. You might remember that <code>res</code> was initialized during your analysis and saved into <code>res*.mat</code> (for details, see <a href="../analysis">Analysis</a>).</p>
+<p>First, we need to load the <code>res</code> structure either manually or using the <a href="../mfiles/res_defaults"><code>res_defaults</code></a> function as shown below. In the latter case, you need to initialize <code>res</code> with <code>res.dir.frwork</code> and <code>res.frwork.level</code> to inform <code>res_defaults</code> which <code>res*.mat</code> file to load.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Load res</span><span class="w"></span>
+<span class="n">res</span><span class="p">.</span><span class="n">dir</span><span class="p">.</span><span class="n">frwork</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;PATH/TO/YOUR/SPECIFIC/FRAMEWORK&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">res</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">res_defaults</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;load&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>Once loaded, <code>res</code> can be populated with the following fields for the visualization of the results:</p>
+<ul>
+<li><code>gen</code>: general options (e.g., interactive file selection) and settings (e.g., position, font size) for the figure, axes and legend,</li>
+<li><code>param</code>: options for plotting the results of hyperparameter optimization, </li>
+<li><code>proj</code>: options for plotting the projections of the data,</li>
+<li><code>behav</code>: options for plotting the behavioural weights,</li>
+<li><code>conn</code>: options for plotting the fMRI connectivity weights,</li>
+<li><code>vbm</code>: options for plotting the voxel-level structural MRI weights,</li>
+<li><code>roi</code>: options for plotting the region-level structural MRI weights,</li>
+<li><code>simul</code>: options for plotting the weights of simulated data,</li>
+<li><code>brainnet</code>: options for using <a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a>.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info<p>Note that the fields for visualization are only temporarily added to <code>res</code> and not saved in the <code>res*.mat</code> file.</p>
+</p>
+</div>
+<p>To get a more detailed description of the fields and subfields of <code>res</code>, please see <a href="../res">here</a>.</p>
+<h2 id="projections">Projections</h2>
+<p>One of the first results of your analysis that you will probably want to visualize is the projections of the data (i.e., latent variables) that are learnt by the CCA/PLS model. This plot can be created by the <a href="../mfiles/plot_proj"><code>plot_proj</code></a> function, which has the following required inputs: the <code>res</code> structure, the data modalities and the level of the associative effect, the type (outer and/or inner) and index of the data split, label for colour-coding the plot, and finally, the low-level function to use ('2d', '2d_group' or '2d_cmap').</p>
+<p>The most simple projection plot can be created using the low-level function <code>plot_proj_2d</code>, which does not require any additional input files.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot data projections</span><span class="w"></span>
+<span class="n">plot_proj</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;X&#39;</span><span class="w"> </span><span class="s">&#39;Y&#39;</span><span class="p">},</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;osplit&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;2d&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="proj_simple" src="../figures/visualization_proj_simple.png" /></p>
+<p>The two other low-level functions allow you to colour-code your scatter plot by a continuous variable (<code>plot_proj_2d_cmap</code>) or groups (<code>plot_proj_2d_group</code>). There are different ways to define the colour-code:</p>
+<ul>
+<li>providing a <code>group.mat</code> file in your data folder, which should include a numeric array to define the colour map or groups,</li>
+<li>using the outer training and test sets to define the groups,</li>
+<li>providing a data and label file, where the data file should include the variable(s) and the label file should include the name of the variables to define the colour map or groups (by default, <code>Y.mat</code> and <code>LabelsY.csv</code> are used for these purposes but custom data and label files are also possible).</li>
+</ul>
+<p>In this example, we use <code>plot_proj_2d_group</code> to create a more advanced plot of the same data by also defining additional figure, axes and legend settings. </p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot data projections</span><span class="w"></span>
+<span class="n">plot_proj</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;X&#39;</span><span class="w"> </span><span class="s">&#39;Y&#39;</span><span class="p">},</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;osplit&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;training+test&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;2d_group&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.axes.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;gen.legend.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.legend.Location&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NorthWest&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="c"> </span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;proj.scatter.SizeData&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;proj.scatter.MarkerEdgeColor&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;proj.scatter.MarkerFaceColor&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.9</span><span class="p">;</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.3</span><span class="p">],</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;proj.xlabel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Modality 1 latent variable&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;proj.ylabel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Modality 2 latent variable&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;gen.axes.XTick&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;proj.lsline&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;on&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="proj_advanced" src="../figures/visualization_proj_advanced.png" /></p>
+<h2 id="weights">Weights</h2>
+<p>Another important part of the analysis results are the model weights of the learnt associative effect. The visualization of the weights are data modality dependent. For instance, the behavioral weights usually have only a few dimensions and can be best captured using a vertical or horizontal bar plot. The brain weights can be higher dimensional and their visualization might change depending on whether they belong to voxel-wise or region-of-interest structural MRI data, or fMRI connectivity data.</p>
+<h3 id="modality-independent">Modality independent</h3>
+<p>A data modality independent visualization can be achieved using a stem plot (<code>plot_weight_stem</code>). It does not require an input file by default. However, if you use simulated data and the true model weights are available as <code>.mat</code> files, you can overlay them on your stem plot.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot Y weights as stem plot</span><span class="w"></span>
+<span class="n">plot_weight</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Y&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;simul&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">split</span><span class="p">.</span><span class="n">best</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;stem&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;gen.axes.YLim&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="w"> </span><span class="mf">1.2</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;simul.weight.norm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;minmax&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;gen.axes.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.legend.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="weight_stem" src="../figures/visualization_stem.png" /></p>
+<h3 id="behaviour">Behaviour</h3>
+<p>The behavioural weights can be best plotted using a bar graph, either vertically (<code>plot_weight_behav_vert</code>) or horizontally (<code>plot_weight_behav_horz</code>). Usually, only the top weights are plotted (e.g., the top 20 variables) and they are ordered by their actual weight values. Sometimes it might also be good to color in different behavioural domains such as cognition, emotion, clinical symptoms, psychometrics, or simply different questionnaires. </p>
+<p>Alternatively, the behavioural weights can be plotted as texts using <code>plot_weight_behav_text</code>. In this case, the weights themselves are actually not visualized (except of the minimum and maximum values), but the labels of the corresponding variables are displayed as text, separately for the positive and negative weights. This visualization makes sense if the labels are ordered based on the weights.</p>
+<p>To create these plots, a label file (usually a <code>.csv</code> file but can be any delimited file) is required with the following column headings:</p>
+<ul>
+<li><code>Label</code>: describing the name or label of the variables,</li>
+<li><code>Category</code> (optional): describing the different domains/categories the variables belong to.</li>
+</ul>
+<p>An example table is shown below.</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'1'</td>
+<td>'Domain 1'</td>
+</tr>
+<tr>
+<td>'2'</td>
+<td>'Domain 2'</td>
+</tr>
+<tr>
+<td>'3'</td>
+<td>'Domain 1'</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot behavioural weights as vertical bar plot</span><span class="w"></span>
+<span class="n">plot_weight</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Y&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;behav&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">split</span><span class="p">.</span><span class="n">best</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;behav_vert&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;gen.axes.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.legend.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;gen.axes.YLim&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">0.4</span><span class="w"> </span><span class="mf">1.2</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;gen.weight.flip&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;behav.weight.sorttype&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sign&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;behav.weight.numtop&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;behav.weight.norm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;minmax&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="weight_behav" src="../figures/visualization_behav_vert.png" /></p>
+<h3 id="brain">Brain</h3>
+<p>Plotting brain weights is probably the most complex as the dimensionality and type of data can be quite different across data modalities (e.g., voxel-wise, region-based, connectivity). These plots also need the most additional inputs.</p>
+<h4 id="voxel-wise-smri">Voxel-wise sMRI</h4>
+<p>Vowel-wise structural MRI weights are plotted on a cortical surface of a glass brain using <a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a> and the <code>plot_weight_brain_cortex</code> function. As the brain data is stored in concatenated form in the <span class="arithmatex">\(\mathbf{X}\)</span> matrix, this function requires a mask file to be able to reshape the brain weights into the same format as the original structural MRI data came from. The mask file should be a 3D image in <code>.nii</code> format including booleans that define which voxels are used as features in your <span class="arithmatex">\(\mathbf{X}\)</span> data (e.g., grey matter in the cortex).</p>
+<p>By default, the brain weights will be overlaid on an MNI template provided by BrainNet Viewer (<code>BrainMesh_ICBM152.nv</code>) but you can also use our own mesh file if you like. In case your brain data is not in MNI space, you can use the built-in normalization option in the toolkit, which uses the reorientation, spatial preprocessing and normalize modules of <a href="https://www.fil.ion.ucl.ac.uk/spm/software/download/">SPM</a>. For this, you will need to make sure that your brain data are in relative proximity to MNI space and you need to provide a source image which will be used as a basis for normalization. </p>
+<h4 id="roi-wise-smri">ROI-wise sMRI</h4>
+<p>ROI-wise structural MRI weights are plotted on the cortical surface as nodes on a glass brain using <a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a> and the <code>plot_weight_brain_node</code> function. This function requires a label file (usually a <code>.csv</code> file but can be any delimited file) with the following column headings:</p>
+<ul>
+<li><code>X</code>, <code>Y</code> and <code>Z</code> coordinates of your regions (MNI coordinates by default),</li>
+<li><code>Label</code>: describing the name or label of the regions,</li>
+<li><code>Index</code> (optional): listing the indexes of the regions,</li>
+<li><code>Color</code> (optional): specifying the colour of the region in the figure.</li>
+</ul>
+<p>An example table is shown below.</p>
+<table>
+<thead>
+<tr>
+<th>X</th>
+<th>Y</th>
+<th>Z</th>
+<th>Index</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-39</td>
+<td>-6</td>
+<td>49</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>41</td>
+<td>-9</td>
+<td>50</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>-20</td>
+<td>35</td>
+<td>35</td>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>By default, the brain weights will be overlaid on an MNI template provided by BrainNet Viewer (<code>BrainMesh_ICBM152.nv</code>) but you can also use our own mesh file. Be careful that the coordinates in your label file match the space of your template file.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot ROI weights on a glass brain</span><span class="w"></span>
+<span class="n">plot_weight</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;X&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;roi&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;brain_node&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;roi.weight.sorttype&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sign&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;roi.weight.numtop&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;roi.out&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">[</span><span class="nb">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">81</span><span class="p">;</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">82</span><span class="p">],</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="nb">reshape</span><span class="p">(</span><span class="mi">100</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="mi">1</span><span class="p">)]);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="weight_roi" src="../figures/visualization_brain_node.png" /></p>
+<h4 id="fmri-connectivity-edges">fMRI connectivity edges</h4>
+<p>fMRI connectivity weights can be plotted on the cortical surface as edges on a glass brain using <a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a> and the <code>plot_weight_brain_edge</code> function. As the brain data are stored in a concatenated form in the <span class="arithmatex">\(\mathbf{X}\)</span> matrix, this function requires a mask file to be able to reshape the connections into a connectivity matrix. The mask file should be a 2D logical array in <code>.mat</code> format including a connectivity matrix (each row/column corresponding to a node) that defines which connections are used as features in your <span class="arithmatex">\(\mathbf{X}\)</span> data. </p>
+<p>In addition, a label file (ususally a <code>.csv</code> file but can be any delimited file) should be also provided with the following column headings:</p>
+<ul>
+<li><code>X</code>, <code>Y</code> and <code>Z</code> coordinates of your regions (MNI coordinates by default),</li>
+<li><code>Label</code>: defining the name or label of the regions,</li>
+<li><code>Index</code>: listing the indexes of the regions,</li>
+<li><code>Color</code> (optional): specifying the colour of the regions in the figure,</li>
+<li><code>Size</code> (optional): specifying the size of the regions in the figure.</li>
+</ul>
+<p>For an example table, see the above section <a href="#roi-wise-structural-mri">here</a>.</p>
+<p>By default, the brain weights will be overlaid on an MNI template provided by BrainNet Viewer (<code>BrainMesh_ICBM152.nv</code>) but you can also use our own mesh file. Be careful that the coordinates in your label file match the space of your template file.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot connectivity weights on glass brain</span><span class="w"></span>
+<span class="n">plot_weight</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;X&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;conn&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">split</span><span class="p">.</span><span class="n">best</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;brain_edge&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;conn.weight.sorttype&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sign&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;conn.weight.numtop&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="weight_conn_edge" src="../figures/visualization_brain_edge.png" /></p>
+<h4 id="fmri-connectivity-nodes">fMRI connectivity nodes</h4>
+<p>fMRI connectivity weights can be also plotted on the cortical surface summarized as nodes on a glass brain using <a href="https://www.nitrc.org/projects/bnv/">BrainNet Viewer</a> and the <code>plot_weight_brain_conn_node</code>. This function requires the same mask files as the <code>plot_weight_brain_edge</code> function (for details, see the section above <a href="#fmri-connectivity-edges">here</a>).</p>
+<p>In addition, a label file (ususally a <code>.csv</code> file but can be any delimited file) should be also provided with the following column headings:</p>
+<ul>
+<li><code>X</code>, <code>Y</code> and <code>Z</code> coordinates of your regions (MNI coordinates by default),</li>
+<li><code>Label</code>: defining the name or label of the regions,</li>
+<li><code>Color</code> (optional): specifying the colour of the regions in the figure.</li>
+</ul>
+<p>For an example table, see the section above.</p>
+<p>By default, the brain weights will be overlaid on an MNI template provided by BrainNet Viewer (<code>BrainMesh_ICBM152.nv</code>) but you can also use our own mesh file. Be careful that the coordinates in your label file match the space of your template file.</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot connectivity weights summarized as nodes on glass brain</span><span class="w"></span>
+<span class="n">plot_weight</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;X&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;conn&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">frwork</span><span class="p">.</span><span class="n">split</span><span class="p">.</span><span class="n">best</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;brain_conn_node&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;conn.weight.sorttype&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sign&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;conn.weight.numtop&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="weight_conn_node" src="../figures/visualization_brain_conn_node.png" /></p>
+<h4 id="fmri-connectivity-modules">fMRI connectivity modules</h4>
+<p>fMRI connectivity weights can be also summarized as modules and plotted as a connectivity matrix (i.e., within and between-module connections). This functionality is provided by the <code>plot_weight_brain_conn_module</code> function, which requires the same mask files as the <code>plot_weight_brain_edge</code> function (for details, see the section above <a href="#fmri-connectivity-edges">here</a>).</p>
+<p>In addition, a label file (ususally a <code>.csv</code> file but can be any delimited file) should be also provided with the following column headings:</p>
+<ul>
+<li><code>Region</code>: defining the module the regions belongs to.</li>
+</ul>
+<p>An example table is shown below.</p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMN</td>
+</tr>
+<tr>
+<td>DMN</td>
+</tr>
+<tr>
+<td>VIS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hyperparameters">Hyperparameters</h2>
+<p>One major advantage of the CCA/PLS tooklit is the possibility to tune the hyperparameters of the different models separately for each associative effect. It is good practice to visualize the hyperparameter surface to better understand the optimization process and the resulting final models. In this example, three surface plots are created showing the out-of-sample correlation and the similarity of <span class="arithmatex">\(\mathbf{w}_x\)</span> and <span class="arithmatex">\(\mathbf{w}_y\)</span> as a function of the two hyperparameters of the SPLS model (L1x, L1y).</p>
+<div class="highlight"><span class="filename">Matlab</span><pre><span></span><code><span class="c">% Plot hyperparameter surface for grid search results</span><span class="w"></span>
+<span class="n">plot_paropt</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;correl&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;simwx&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;simwy&#39;</span><span class="p">},</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;gen.figure.Position&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">500</span><span class="w"> </span><span class="mi">600</span><span class="w"> </span><span class="mi">1200</span><span class="w"> </span><span class="mi">400</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;gen.axes.FontSize&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;gen.axes.XScale&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;log&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gen.axes.YScale&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;log&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="paropt" src="../figures/example_simul_paropt.png" /></p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../analysis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Analysis" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Analysis
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../cfg/" class="md-footer__link md-footer__link--next" aria-label="Next: cfg" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              cfg
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.cefbb252.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.17f42bbf.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

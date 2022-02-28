@@ -1,0 +1,1184 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/brain_icon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
+    
+    
+      
+        <title>cfg - CCA/PLS Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.82f3c0b9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9204c3b2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dir" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CCA/PLS Toolkit" class="md-header__button md-logo" aria-label="CCA/PLS Toolkit" data-md-component="logo">
+      
+  <img src="../assets/brain_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CCA/PLS Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              cfg
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/anaston/PLS_CCA_framework/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CCA_PLS_toolkit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CCA/PLS Toolkit" class="md-nav__button md-logo" aria-label="CCA/PLS Toolkit" data-md-component="logo">
+      
+  <img src="../assets/brain_icon.png" alt="logo">
+
+    </a>
+    CCA/PLS Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/anaston/PLS_CCA_framework/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CCA_PLS_toolkit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background/" class="md-nav__link">
+        Background
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analysis/" class="md-nav__link">
+        Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualization/" class="md-nav__link">
+        Visualization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Defaults
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Defaults" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Defaults
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          cfg
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        cfg
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dir" class="md-nav__link">
+    dir
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine" class="md-nav__link">
+    machine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frwork" class="md-nav__link">
+    frwork
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defl" class="md-nav__link">
+    defl
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stat" class="md-nav__link">
+    stat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    env
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../res/" class="md-nav__link">
+        res
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/cfg_defaults/" class="md-nav__link">
+        cfg_defaults
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/cleanup_files/" class="md-nav__link">
+        cleanup_files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/generate_data/" class="md-nav__link">
+        generate_data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/plot_paropt/" class="md-nav__link">
+        plot_paropt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/plot_proj/" class="md-nav__link">
+        plot_proj
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/plot_weight/" class="md-nav__link">
+        plot_weight
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/res_defaults/" class="md-nav__link">
+        res_defaults
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/set_path/" class="md-nav__link">
+        set_path
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/update_dir/" class="md-nav__link">
+        update_dir
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/example_simulation/" class="md-nav__link">
+        Simulated data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/example_smri/" class="md-nav__link">
+        Structural MRI data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mfiles/example_fmri/" class="md-nav__link">
+        Functional MRI data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../full_demo/" class="md-nav__link">
+        Full Demo
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dir" class="md-nav__link">
+    dir
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine" class="md-nav__link">
+    machine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frwork" class="md-nav__link">
+    frwork
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defl" class="md-nav__link">
+    defl
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stat" class="md-nav__link">
+    stat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    env
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/anaston/PLS_CCA_framework/edit/master/docs/cfg.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>cfg</h1>
+
+<p>Here you can find a description of all possible settings of the fields and subfields of <code>cfg</code>. First parameter always indicates the default option.</p>
+<h3 id="dir">dir</h3>
+<p>Essential paths to your project, framework and processed data. The project folder should include a <code>data</code> folder where all the input data are stored.</p>
+<ul>
+<li>
+<p><strong>.project</strong> [<em>path</em>]</p>
+<p>full path to your project, such as 'PATH/TO/YOUR/PROJECT'</p>
+</li>
+<li>
+<p><strong>.frwork</strong> [<em>path</em>]</p>
+<p>full path to your specific framework, such as
+'PATH/TO/YOUR/PROJECT/framework/ANALYSIS_NAME'</p>
+<p>analysis name is generated from machine name and framework settings, for instance, an SPLS analysis with a single holdout set (20% of the data) and 10 validation sets (20% of the optimization set) and <code>cfg.frwork.flag = '_TEST'</code> will generate the <code>spls_holdout1-0.20_subsamp10-0.20_TEST</code> folder</p>
+</li>
+<li>
+<p><strong>.load</strong> [<em>path</em>]</p>
+<p>full path to your processed data, such as 
+'PATH/TO/YOUR/PROJECT/framework/ANALYSIS_NAME/load'</p>
+<p>it possibly includes a <code>preproc</code> folder with the results of the preprocessing (e.g., mean, std of the features and the beta coefficients from the deconfounding) and an <code>svd</code> folder with the SVD results for computational efficiency of <a href="../background/#canonical-correlation-analysis-cca">CCA</a>, <a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA-CCA</a> and <a href="../background/#regularized-cca-rcca">RCCA</a></p>
+</li>
+</ul>
+<h3 id="machine">machine</h3>
+<p>Algorithm to be used, its settings and information about hyperparameter 
+optimization. Please make sure that you are familiar with the
+hyperparameter settings of the chosen algorithm, e.g. range and scale of
+hyperparameter values for grid search or number of PCA components. We strongly encourage to use <a href="../background/#regularized-cca-rcca">RCCA</a>, <a href="../background/#sparse-pls-spls">SPLS</a> or <a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA-CCA</a>. For a discussion, see Mihalik et al., under review.</p>
+<ul>
+<li>
+<p><strong>.name</strong> [<em>'cca', 'rcca', 'pls', 'spls'</em>]</p>
+<p>name of the algorithm</p>
+<p><a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA-CCA</a> analysis is defined by <code>cfg.machine.name = cca</code> and <code>cfg.machine.param = {'PCAx' 'PCAy'}</code></p>
+<p><a href="../background/#regularized-cca-rcca">RCCA</a> finds a smooth solution between CCA and PLS using L2-norm regularization (see <code>cfg.machine.param.L2x</code> and <code>cfg.machine.param.L2y</code> below)</p>
+</li>
+<li>
+<p><strong>.metric</strong> [<em>cell array</em>]</p>
+<p>metrics to evaluate the CCA/PLS algorithm</p>
+<p>note that each metric provided here will be saved on disc during hyperparameter optimization, training the main model and permutation testing, so they can be used for diagnostics later either they are used as criterion to evaluate a model or not</p>
+<p>options for each cell: <code>'trcorrel'</code> (in-sample correlation), <code>'correl'</code> (out-of-sample correlation measuring the generalizability of the model), <code>'trcovar'</code> (in-sample covariance), <code>'covar'</code> (out-of-sample covariance measuring the generalizability of the model), <code>'trexvarx'</code> (in-sample percent explained variance by <span class="arithmatex">\(\mathbf{w}_x\)</span>), <code>'exvarx'</code> (out-of-sample percent explained variance by <span class="arithmatex">\(\mathbf{w}_x\)</span>),  <code>'trexvary'</code> (in-sample percent explained variance by <span class="arithmatex">\(\mathbf{w}_y\)</span>), <code>'exvary'</code> (out-of-sample percent explained variance by <span class="arithmatex">\(\mathbf{w}_y\)</span>), <code>'simwx'</code> (similarity of <span class="arithmatex">\(\mathbf{w}_x\)</span> across training sets measuring the stability of the model), <code>'simwy'</code> (similarity of <span class="arithmatex">\(\mathbf{w}_y\)</span> across training sets measuring the stability of the model), <code>'unsuc'</code> (number of unsuccessful convergence in SPLS, should be a small number in general, for details, see <code>cfg.machine.spls.maxiter</code>)</p>
+</li>
+<li>
+<p><strong>.param.crit</strong> [<em>'correl', 'correl+simwxy'</em>]</p>
+<p>criterion to select the best hyperparameter</p>
+<p>in general, we recommend using <code>'correl'</code> (measuring the generalizability of the model) or <code>'correl+simwxy'</code> (measuring the stability and the generalizability of the model) for <a href="../background/#sparse-pls-spls">SPLS</a></p>
+<p><code>'correl+simwxy'</code> calculates a 2-dimensional Euclidean distance from {1,1} based on out-of-sample correlation and the average similarity of <span class="arithmatex">\(\mathbf{w}_x\)</span> and <span class="arithmatex">\(\mathbf{w}_y\)</span> (i.e., it measures the deviation from perfect out-of-sample generalizability and perfect model stability, for details, see <a href="https://doi.org/10.1016/j.biopsych.2019.12.001">Mihalik et al 2020</a>)</p>
+</li>
+<li>
+<p><strong>.param.name</strong> [<em>cell array</em>]</p>
+<p>name of the hyperparameters in the CCA/PLS model</p>
+<p>in each name, the first characters refers to the type of hyperparameter and the last character refers to the data modality, e.g., L1x for L1 regularization of <span class="arithmatex">\(\mathbf{w}_x\)</span></p>
+<p>potential settings: <code>{'L1x', 'L1y'}</code> for L1 regularization in <a href="../background/#sparse-pls-spls">SPLS</a>, <code>{'L2x', 'L2y'}</code> for L2 regularization in <a href="../background/#regularized-cca-rcca">RCCA</a>, <code>{'PCAx', 'PCAy'}</code> for number of PCA components in <a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA_CCA</a></p>
+<p>an alternative to setting the number of PCA components is setting the explained variance by the PCA components using <code>{'VARx', 'VARy'}</code> in <a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA_CCA</a></p>
+</li>
+<li>
+<p><strong>.param.type</strong> [<em>'factorial', 'matched'</em>]</p>
+<p>defines whether the grid search of hyperparameters should be based on a factorial combination of all hyperparameter values in the two data modalities (i.e., 100 combinations for 10 hyperparameter values in both data modalities) or the combination of hyperparameter values based on matching their indices (i.e., first index in one data modality is paired with first index in the other data modality)</p>
+</li>
+<li>
+<p><strong>.param.L1x, .param.L1y</strong> [<em>int or numeric array</em>]</p>
+<p>amount of L1 regularization for <span class="arithmatex">\(\mathbf{w}_x\)</span> and <span class="arithmatex">\(\mathbf{w}_y\)</span> (see <span class="arithmatex">\(c_x\)</span> and <span class="arithmatex">\(c_y\)</span> in <a href="../background/#sparse-pls-spls">SPLS</a>)</p>
+<p>if not provided, the function generates a logarithmically scaled numeric array based on the following equation, for instance, for <span class="arithmatex">\(\mathbf{w}_x\)</span>:
+$$
+c_x = logspace(a, b, n)
+$$
+where <span class="arithmatex">\(c_x\)</span> is the hyperparameter (i.e., <code>cfg.machine.param.L1x</code>), <span class="arithmatex">\(a\)</span> is the start of the logarithmic range (i.e., <code>log(cfg.machine.param.rangeL1x(1))</code>), <span class="arithmatex">\(b\)</span> is the end of the logarithmic range (i.e., <code>log(cfg.machine.param.rangeL2x(2))</code>) and <span class="arithmatex">\(n\)</span> is the number of values between <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> (i.e., <code>cfg.machine.param.nL1x</code>)</p>
+</li>
+<li>
+<p><strong>.param.rangeL1x, .param.rangeL1y</strong> [<em>numeric array</em>]</p>
+<p>range of the hyperparameters for L1 regularization of <span class="arithmatex">\(\mathbf{w}_x\)</span> and <span class="arithmatex">\(\mathbf{w}_y\)</span></p>
+<p>the default range is between 1 and the square root of the number of features</p>
+<p>if a given value is outside of this default range then L1 regularization is not active and <a href="../background/#partial-least-squares-pls">PLS</a> is used instead of <a href="../background/#sparse-pls-spls">SPLS</a></p>
+</li>
+<li>
+<p><strong>.param.nL1x, .param.nL1y</strong> [<em>int --&gt; 10</em>]</p>
+<p>number of values in the range of hyperparameters for L1 regularization of <span class="arithmatex">\(\mathbf{w}_x\)</span> and <span class="arithmatex">\(\mathbf{w}_y\)</span> (for details, see <code>cfg.machine.param.L1x</code> and <code>cfg.machine.param.L1y</code> above)</p>
+</li>
+<li>
+<p><strong>.param.L2x, .param.L2y</strong> [<em>int</em>]</p>
+<p>amount of L2 regularization for <span class="arithmatex">\(\mathbf{w}_x\)</span> and <span class="arithmatex">\(\mathbf{w}_y\)</span> (see <span class="arithmatex">\(c_x\)</span> and <span class="arithmatex">\(c_y\)</span> in <a href="../background/#regularized-cca-rcca">RCCA</a>)</p>
+<p><a href="../background/#regularized-cca-rcca">RCCA</a> is equivalent to <a href="../background/#canonical-correlation-analysis-cca">CCA</a> if both values are set to <span class="arithmatex">\(0\)</span></p>
+<p><a href="../background/#regularized-cca-rcca">RCCA</a> is equivalent to <a href="../background/#partial-least-squares-pls">PLS</a> if both values are set to <span class="arithmatex">\(1\)</span></p>
+<p>if not provided, the function generates a logarithmically scaled numeric array based on the following equation, for instance, for <span class="arithmatex">\(\mathbf{w}_x\)</span>:
+$$
+c_x = 1 - logspace(a, b, n)
+$$
+where <span class="arithmatex">\(c_x\)</span> is the hyperparameter (i.e., <code>cfg.machine.param.L2x</code>), <span class="arithmatex">\(a\)</span> is the start of the logarithmic range (i.e., <code>-log(cfg.machine.param.rangeL2x(1))</code>), <span class="arithmatex">\(b\)</span> is the end of the logarithmic range (i.e, <code>-log(cfg.machine.param.rangeL2x(2))</code>) and <span class="arithmatex">\(n\)</span> is the number of values between <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> (i.e., <code>cfg.machine.param.nL2x</code>) </p>
+</li>
+<li>
+<p><strong>.param.rangeL2x, .param.rangeL2y</strong> [<em>numeric array</em>]</p>
+<p>range of hyperparameters for L2 regularization of <span class="arithmatex">\(\mathbf{w}_x\)</span> and <span class="arithmatex">\(\mathbf{w}_y\)</span></p>
+<p>the default range is between 1 and the squared number of features</p>
+</li>
+<li>
+<p><strong>.param.nL2x, .param.nL2y</strong> [<em>int</em>]</p>
+<p>number of values in the range of hyperparameters for L2 regularization of <span class="arithmatex">\(\mathbf{w}_x\)</span> and <span class="arithmatex">\(\mathbf{w}_y\)</span> (for details, see <code>cfg.machine.param.L2x</code> and <code>cfg.machine.param.L2y</code> above)</p>
+</li>
+<li>
+<p><strong>.param.PCAx, .param.PCAy</strong> [<em>int</em>]</p>
+<p>number of principal components kept during the SVD step of <a href="../background/#canonical-correlation-analysis-cca">CCA</a>, <a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA-CCA</a> or <a href="../background/#regularized-cca-rcca">RCCA</a></p>
+<p>if not provided, the function generates a logarithmically scaled numeric array based on the following equation, for instance, for <span class="arithmatex">\(\mathbf{X}\)</span>:
+$$
+c_x = logspace(a, b, n)
+$$
+where <span class="arithmatex">\(c_x\)</span> is the hyperparameter (i.e., <code>cfg.machine.param.PCAx</code>), <span class="arithmatex">\(a\)</span> is the start of the logarithmic range (i.e., <code>log(cfg.machine.param.rangePCAx(1))</code>), <span class="arithmatex">\(b\)</span> is the end of the logarithmic range (i.e, <code>log(cfg.machine.param.rangePCAx(2))</code>) and <span class="arithmatex">\(n\)</span> is the number of values between <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> (i.e., <code>cfg.machine.param.nPCAx</code>)</p>
+</li>
+<li>
+<p><strong>.param.rangePCAx, .param.rangePCAy</strong> [<em>numeric array</em>]</p>
+<p>range of hyperparameters for number of principal components of data <span class="arithmatex">\(\mathbf{X}\)</span> and <span class="arithmatex">\(\mathbf{Y}\)</span></p>
+<p>the default range is between 1 and the rank of the training data</p>
+</li>
+<li>
+<p><strong>.param.nPCAx, .param.nPCAy</strong> [<em>int</em>]</p>
+<p>number of values in the range of hyperparameters for principal components of <span class="arithmatex">\(\mathbf{X}\)</span> and <span class="arithmatex">\(\mathbf{Y}\)</span> (for details, see <code>cfg.machine.param.PCAx</code> and <code>cfg.machine.param.PCAy</code> above)</p>
+</li>
+<li>
+<p><strong>.param.VARx, .param.VARy</strong> [<em>int --&gt; 0.99</em>]</p>
+<p>variance of data kept in the principal components during the SVD step of <a href="../background/#canonical-correlation-analysis-cca">CCA</a>, <a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA-CCA</a> or <a href="../background/#regularized-cca-rcca">RCCA</a> </p>
+<p>if not provided, the function generates a linearly scaled numeric array based on the following equation, for instance, for <span class="arithmatex">\(\mathbf{X}\)</span>:
+$$
+c_x = linspace(a, b, n)
+$$
+where <span class="arithmatex">\(c_x\)</span> is the hyperparameter (i.e., <code>cfg.machine.param.VARx</code>), <span class="arithmatex">\(a\)</span> is the start of the linear range (i.e., <code>cfg.machine.param.rangeVARx(1))</code>), <span class="arithmatex">\(b\)</span> is the end of the linear range (i.e, <code>cfg.machine.param.rangeVARx(2))</code>) and <span class="arithmatex">\(n\)</span> is the number of values between <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> (i.e., <code>cfg.machine.param.nVARx</code>)</p>
+</li>
+<li>
+<p><strong>.param.rangeVARx, .param.rangeVARy</strong> [<em>numeric array</em>]</p>
+<p>range of hyperparameters for explained variance in principal components of data <span class="arithmatex">\(\mathbf{X}\)</span> and <span class="arithmatex">\(\mathbf{Y}\)</span></p>
+<p>the default range is between 0.1 and 1</p>
+</li>
+<li>
+<p><strong>.param.nVARx, .param.nVARy</strong> [<em>int</em>]</p>
+<p>number of values in the range of hyperparameters for explained variance in principal components of <span class="arithmatex">\(\mathbf{X}\)</span> and <span class="arithmatex">\(\mathbf{Y}\)</span> (for details, see <code>cfg.machine.param.VARx</code> and <code>cfg.machine.param.VARy</code> above)</p>
+</li>
+<li>
+<p><strong>.svd.tol</strong> [<em>int --&gt; 1e-10</em>]</p>
+<p>eigenvalues smaller than tolerance are removed during the SVD step of <a href="../background/#canonical-correlation-analysis-cca">CCA</a>, <a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA-CCA</a> or <a href="../background/#regularized-cca-rcca">RCCA</a></p>
+</li>
+<li>
+<p><strong>.svd.varx</strong> [<em>float</em>]</p>
+<p>variance of <span class="arithmatex">\(\mathbf{X}\)</span> kept during the SVD step of <a href="../background/#canonical-correlation-analysis-cca">CCA</a>, <a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA-CCA</a> or <a href="../background/#regularized-cca-rcca">RCCA</a> </p>
+</li>
+<li>
+<p><strong>.svd.vary</strong> [<em>float</em>]</p>
+<p>variance of <span class="arithmatex">\(\mathbf{Y}\)</span> kept during the SVD step of <a href="../background/#canonical-correlation-analysis-cca">CCA</a>, <a href="../background/#cca-with-pca-dimensionality-reduction-pca-cca">PCA-CCA</a> or <a href="../background/#regularized-cca-rcca">RCCA</a></p>
+</li>
+<li>
+<p><strong>.spls.tol</strong> [<em>int --&gt; 1e-5</em>]</p>
+<p>tolerance during SPLS convergence (for details, see <a href="https://doi.org/10.1016/j.jneumeth.2016.06.011">Monteiro et al. 2016</a></p>
+</li>
+<li>
+<p><strong>.spls.maxiter</strong> [<em>int --&gt; 100</em>]</p>
+<p>maximum number of iterations during SPLS convergence (for details, see <a href="https://doi.org/10.1016/j.jneumeth.2016.06.011">Monteiro et al. 2016</a></p>
+</li>
+<li>
+<p><strong>.simw</strong> [<em>char</em>]</p>
+<p>defines the type of similarity measure to assess the stability of model weights across splits</p>
+<p><code>'correlation-Pearson'</code> calculates absolute Pearson correlation between each pair of weights</p>
+<p><code>'overlap-corrected'</code> and <code>'overlap-uncorrected'</code> calculate the overlap between each pair of sparse weigths in <a href="../background/#sparse-pls-spls">SPLS</a> (for details, see <a href="https://www.frontiersin.org/articles/10.3389/fnins.2017.00062/full">Baldassarre et al. 2017</a>, <a href="https://doi.org/10.1016/j.biopsych.2019.12.001">Mihalik et al. 2020</a>).</p>
+</li>
+</ul>
+<h3 id="frwork">frwork</h3>
+<p>Details of framework with two main approaches. Divide data to training 
+and test sets using single or multiple holdouts (for details, see <a href="https://doi.org/10.1016/j.jneumeth.2016.06.011">Monteiro et al. 2016</a>) by randomly 
+subsampling subjects. Otherwise, use a permutation approach without any data splitting (see e.g., <a href="https://doi.org/10.1038/nn.4125">Smith et al. 2015</a>). The default values will change depending on the type of the framework.</p>
+<ul>
+<li>
+<p><strong>.name</strong> [<em>'holdout', 'permutation'</em>]</p>
+<p>type of the framework</p>
+</li>
+<li>
+<p><strong>.flag</strong> [<em>char</em>]</p>
+<p>a short name to be appended to your analysis name which will then 
+define the framework folder, see <code>cfg.dir.frwork</code></p>
+</li>
+<li>
+<p><strong>.nlevel</strong> [<em>int</em>]</p>
+<p>number of associative effects to be searched for</p>
+</li>
+<li>
+<p><strong>.split.nout</strong> [<em>int</em>]</p>
+<p>number of outer splits/folds</p>
+</li>
+<li>
+<p><strong>.split.propout</strong> [<em>float --&gt; 0.2</em>]</p>
+<p>proportion of holdout/test set in <code>'holdout'</code> framework</p>
+<p>higher value is recommended for samples n&lt;500 (e.g., 0.2-0.5), and 
+lower value (e.g., 0.1) should be sufficient for samples n&gt;1000 </p>
+<p>set to 0 in <code>'permutation'</code> framework</p>
+</li>
+<li>
+<p><strong>.split.nin</strong> [<em>int</em>]</p>
+<p>number of inner splits/folds</p>
+</li>
+<li>
+<p><strong>.split.propin</strong> [<em>float --&gt; 0.2</em>]</p>
+<p>proportion of validation set in <code>'holdout'</code> framework</p>
+</li>
+</ul>
+<h3 id="defl">defl</h3>
+<p>Deflation methods and strategies (for an introduction, see <a href="../background/#deflation-methods">here</a> in the Background page). In case we use multiple outer splits of the data, it is of interest which split to use as the basis for deflation.
+At the moment, we support the strategy of using the weights of the best data split (e.g., based on highest out-of-sample correlation) and deflate all other splits with it based on <a href="https://doi.org/10.1016/j.jneumeth.2016.06.011">Monteiro et al. 2016</a>.</p>
+<ul>
+<li>
+<p><strong>.name</strong> [<em>'generalized', 'pls-projection', 'pls-modeA', 'pls-regression'</em>]</p>
+<p>type of deflation</p>
+</li>
+<li>
+<p><strong>.crit</strong> [<em>'correl', 'pval+correl', 'correl+simwxy', 'correl+simwx+simwy', 'none'</em>]</p>
+<p>criterion to define best (i.e. most representative) data split to be 
+used for deflation</p>
+<p>if 'none' set then each split is deflated by itself (i.e. they are 
+treated independently) </p>
+</li>
+</ul>
+<h3 id="stat">stat</h3>
+<p>Statistical inference. Testing the generalizability of the models (i.e., using out-of-sample correlations) is one of our key recommendations. Furthermore, we advise to check the robustness (i.e., how many data splits are significant) and the stability (i.e., similarity of the weights) of the model instead of purely relying on a p-value. In the multiple-holdout framework, we support only statistical inference based on omnibus hypothesis proposed by <a href="https://doi.org/10.1016/j.jneumeth.2016.06.011">Monteiro et al
+2016</a>.</p>
+<ul>
+<li>
+<p><strong>.nperm</strong> [<em>int</em>]</p>
+<p>number of permutations</p>
+</li>
+<li>
+<p><strong>.alpha</strong> [<em>float --&gt; 0.05</em>]</p>
+<p>threshold for significance testing</p>
+<p>note, that in the omnibus hypothesis approach, the threshold is adjusted by Bonferroni correction using the number of holdout sets </p>
+</li>
+<li>
+<p><strong>.crit</strong> [<em>'correl', 'covar'</em>]</p>
+<p>statistical inference within splits (i.e., one permutation test for each 
+data split) based on given criterion</p>
+</li>
+<li>
+<p><strong>.perm</strong> [<em>'train', 'train+test'</em>]</p>
+<p>defines whether only the training examples or both the training and test examples are shuffled during permutation</p>
+<p>note, that the shuffling is performed within training and test sets, i.e., there is no leakage from training to test data    </p>
+</li>
+</ul>
+<h3 id="data">data</h3>
+<p>Details of the data and its properties including modalities, dimensionality and exchangeability block structure. The preprocessing strategy and the 
+filenames with full path are also defined here. We highlight that when the data comes in a preprocessed format (e.g., imputed, z-scored), inference using holdout framework might be invalid (i.e., p-values inflated).</p>
+<ul>
+<li>
+<p><strong>.block</strong> [<em>boolean</em>]</p>
+<p>defines if there is a block structure in the data, i.e., examples are not 
+independent of each other </p>
+</li>
+<li>
+<p><strong>.nsubj</strong> [<em>int</em>]</p>
+<p>number of subjects/examples</p>
+</li>
+<li>
+<p><strong>.preproc</strong> [<em>cell array --&gt; {'impute', 'deconf', 'zscore'}</em>]</p>
+<p>data preprocessing strategy including missing value imputation,
+z-scoring and deconfounding</p>
+<p>of note, data preprocessing is calculated on training data and applied
+to test data if 'holdout' framework used </p>
+</li>
+<li>
+<p><strong>.mod</strong> [<em>cell array</em>]</p>
+<p>data modalaties to be used (e.g.<code>{'X' 'Y'}</code>)</p>
+</li>
+<li>
+<p><strong>.X.fname, .Y.fname, .C.fname</strong> [<em>filepath --&gt; 'X.mat', 'Y.mat', 'C.mat'</em>]</p>
+<p>filename with full path to data <span class="arithmatex">\(\mathbf{X}\)</span>, <span class="arithmatex">\(\mathbf{Y}\)</span>, <span class="arithmatex">\(\mathbf{C}\)</span></p>
+</li>
+<li>
+<p><strong>.X.impute, .Y.impute, .C.impute</strong> [<em>'median'</em>]</p>
+<p>strategy to impute missing values</p>
+</li>
+<li>
+<p><strong>.X.deconf, .Y.deconf</strong> [<em>standard, none</em>]</p>
+<p>type of deconfounding</p>
+<p>'none' could be used if deconfounding is needed for the other modality
+but not the one where 'none' is set</p>
+</li>
+<li>
+<p><strong>.X.nfeat, .Y.nfeat</strong> [<em>int</em>]</p>
+<p>number of features/variables in data <span class="arithmatex">\(\mathbf{X}\)</span>, <span class="arithmatex">\(\mathbf{Y}\)</span></p>
+</li>
+<li>
+<p><strong>.EB.split</strong> [<em>int or numeric array</em>]</p>
+<p>indexes of columns in EB matrix to use for defining exchangeability
+blocks for data partitioning</p>
+<p>if multi-level blocks are provided, most likely you need to provide 2 
+columns here as e.g., no cross-over across different family types 
+(column 2) but shuffling across families (column 3) within same family 
+type are allowed, in other words, families should be in the same data
+split (training or test)</p>
+</li>
+<li>
+<p><strong>.EB.stat</strong> [<em>int or numeric array</em>]</p>
+<p>indexes of columns in EB matrix to use for defining exchangeability
+blocks for restricted permutations</p>
+</li>
+</ul>
+<h3 id="env">env</h3>
+<p>Computation environment can be either local or cluster. In the latter 
+case, we currently support <strong>SGE</strong> or <strong>SLURM</strong> scheduling systems (for details, see <a href="../getting_started/#running-on-a-cluster">here</a> in the Getting Started page).</p>
+<ul>
+<li>
+<p><strong>.comp</strong> [<em>'local', 'cluster'</em>]</p>
+<p>computation environment</p>
+</li>
+<li>
+<p><strong>.commit</strong> [<em>char</em>]</p>
+<p>SHA hash of the latest commit in git (i.e., toolkit vesion) for
+reproducibility</p>
+</li>
+<li>
+<p><strong>.OS</strong> [<em>'mac', 'unix', 'pc'</em>]</p>
+<p>operating system (OS)</p>
+<p>this information is used when transferring files between OS and
+updating paths (see <code>cfg.dir</code> fields and <a href="../mfiles/update_dir"><code>update_dir</code></a> function)</p>
+</li>
+<li>
+<p><strong>.fileend</strong> [<em>char --&gt; '_1'</em>]</p>
+<p>suffix at the end of each file saved in the framework folder whilst
+running the experiment on a cluster</p>
+<p>for file storage efficiency and easier data transfer, we suggest to use the <a href="../mfiles/cleanup_files"><code>cleanup_files</code></a> function after an experiment is completed to delete all intermediate and duplicate files</p>
+</li>
+<li>
+<p><strong>.save.compression</strong> [<em>boolean --&gt; 1</em>]</p>
+<p>defines if files are saved with or without compression</p>
+<p>of note, loading an uncompressed file can be faster for very large data
+files</p>
+</li>
+<li>
+<p><strong>.verbose</strong> [<em>int --&gt; 2</em>]</p>
+<p>level of verbosity to display information in the command line during the experiment</p>
+<p>1: detailed information with including elapsed time between time sensitive operations</p>
+<p>2: detailed information without elapsed time</p>
+<p>3: minimal information</p>
+</li>
+<li>
+<p><strong>.seed.split</strong>, [<em>char --&gt; 'default'</em> or <em>int</em>]</p>
+<p>seed before random data splitting</p>
+<p>value is passed as input to MATLAB's <code>rng</code> function</p>
+</li>
+<li>
+<p><strong>.seed.model</strong>, [<em>int</em> or <em>char</em>]</p>
+<p>seed before training models in random order during hyperparameter optimization</p>
+<p>the default value is taken from <code>cfg.env.fileend</code> (converted to int)</p>
+<p>value is passed as input to MATLAB's <code>rng</code> function</p>
+</li>
+<li>
+<p><strong>.seed.perm</strong>, [<em>char --&gt; 'default'</em> or <em>int</em>]</p>
+<p>seed before training models in random order during permutation testing</p>
+<p>value is passed as input to MATLAB's <code>rng</code> function</p>
+</li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../visualization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Visualization" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Visualization
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../res/" class="md-footer__link md-footer__link--next" aria-label="Next: res" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              res
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.cefbb252.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.17f42bbf.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

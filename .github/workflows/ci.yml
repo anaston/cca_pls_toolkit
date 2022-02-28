@@ -1,0 +1,22 @@
+name: ci
+on:
+  push:
+    branches:
+      - master
+      - cam
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs-material mkdocs-with-pdf
+      - run: pip install --upgrade beautifulsoup4==4.9.3
+      - run: cd documentation
+      - name: Deploy website
+        working-directory: ./documentation
+        run: |
+          make build-mfiles
+          mkdocs gh-deploy --force

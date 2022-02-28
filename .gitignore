@@ -4,7 +4,7 @@ documentation/.python-version
 documentation/.venv
 examples/example_fmri/
 examples/example_simulation/
-examples/example/smri/
+examples/example_smri/
 external/
 manuscript/
 projects/
