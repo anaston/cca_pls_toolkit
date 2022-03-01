@@ -26,9 +26,9 @@ Our detailed documentation can be found [here](here).
 
 ## Contributors
 
-- [Agoston Mihalik](https://github.com/anaston) - main developer (University of Cambridge, UK)
+- [Agoston Mihalik](https://github.com/anaston) - main developer (former at UCL, now at University of Cambridge, UK)
 - [Nils Winter](https://github.com/NilsWinter) (University of Münster, Germany)
-- [Fabio Ferreira](https://github.com/ferreirafabio80) (Imperial College London, UK)
+- [Fabio Ferreira](https://github.com/ferreirafabio80) (former at UCL, now at Imperial College London, UK)
 - [James Chapman](https://github.com/jameschapman19) (UCL, UK)
 - [Janaina Mourao-Miranda](https://iris.ucl.ac.uk/research/personal/index?upi=JMOUR63) - Principal Investigator (UCL, UK)
 
