@@ -10,8 +10,9 @@ T = readtable(labelfname);
 if ~ismember('Label', T.Properties.VariableNames) % check if necessary fields available
     error('The behavioural label file should contain the following columns: Label');
 end
-if ~ismember('Category', T.Properties.VariableNames)
-    T.Category = repmat({'All'}, size(T, 1), 1);
+iscategory = ismember('Category', T.Properties.VariableNames);
+if ~iscategory
+    T.Category = sprintfc('%d', ones(size(T, 1), 1));
 end
 
 % Open figure
@@ -76,7 +77,7 @@ set(gca, name_value{:});
 saveas(gcf, [wfname res.gen.figure.ext]);
 
 % Save weights to csv
-if ismember('Category', T.Properties.VariableNames)
+if iscategory
     writetable(T(:,{'Category' 'Label' 'Weight'}), [wfname '.csv'], ...
         'QuoteStrings', true);
 else

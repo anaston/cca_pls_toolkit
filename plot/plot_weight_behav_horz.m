@@ -10,8 +10,9 @@ T = readtable(labelfname);
 if ~ismember('Label', T.Properties.VariableNames) % check if necessary fields available
     error('The behavioural label file should contain the following columns: Label');
 end
-if ~ismember('Category', T.Properties.VariableNames)
-    T.Category = ones(size(T, 1), 1);
+iscategory = ismember('Category', T.Properties.VariableNames);
+if ~iscategory
+    T.Category = sprintfc('%d', ones(size(T, 1), 1));
 end
 
 % Open figure
@@ -74,8 +75,10 @@ ylabel(res.behav.ylabel);
 xlabel(res.behav.xlabel);
 
 % Update legend and axes
-name_value = parse_struct(res.gen.legend);
-legend(categ, name_value{:});
+if iscategory
+    name_value = parse_struct(res.gen.legend);
+    legend(categ, name_value{:});
+end
 name_value = parse_struct(res.gen.axes);
 set(gca, 'yTick', 1:numel(T.Label), 'yTickLabel', T.Label, name_value{:});
 
@@ -83,7 +86,7 @@ set(gca, 'yTick', 1:numel(T.Label), 'yTickLabel', T.Label, name_value{:});
 saveas(gcf, [wfname res.gen.figure.ext]);
 
 % Save weights to csv
-if ismember('Category', T.Properties.VariableNames)
+if iscategory
     writetable(T(:,{'Category' 'Label' 'Weight'}), [wfname '.csv'], ...
         'QuoteStrings', true);
 else
