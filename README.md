@@ -26,23 +26,22 @@ Our detailed documentation can be found [here](here).
 
 ## Contributors
 
-- [Agoston Mihalik](https://github.com/anaston) - main developer (former at UCL, now at University of Cambridge, UK)
-- [Nils Winter](https://github.com/NilsWinter) (University of Münster, Germany)
-- [Fabio Ferreira](https://github.com/ferreirafabio80) (former at UCL, now at Imperial College London, UK)
-- [James Chapman](https://github.com/jameschapman19) (UCL, UK)
-- [Janaina Mourao-Miranda](https://iris.ucl.ac.uk/research/personal/index?upi=JMOUR63) - Principal Investigator (UCL, UK)
+- Agoston Mihalik - main developer (former at UCL, now at University of Cambridge, UK)
+- Nils Winter (University of Münster, Germany)
+- Fabio Ferreira (former at UCL, now at Imperial College London, UK)
+- James Chapman (UCL, UK)
+- Janaina Mourao-Miranda - Principal Investigator (UCL, UK)
 
-Some of the code used in the toolkit was developed by [Joao Monteiro](https://github.com/jmmonteiro) who was a PhD student at UCL (currently a data scientist at Heni).
+Some of the code used in the toolkit was developed by Joao Monteiro who was a PhD student at UCL (currently a data scientist at Heni). We wish to thank members and collaborators of the [Machine Learning & Neuroimaging Laboratory](http://www.mlnl.cs.ucl.ac.uk) for testing the toolkit and providing invaluable feedback. We would particularly like to acknowledge Eliana Nicolaisen, Cemre Zor, Taiane Ramos and Richard Nguyen.
 
-We wish to thank members and collaborators of the [Machine Learning & Neuroimaging Laboratory](http://www.mlnl.cs.ucl.ac.uk) for testing the toolkit and providing invaluable feedback. We would particularly like to acknowledge Eliana Nicolaisen, Cemre Zor, Taiane Ramos and Richard Nguyen.
-
-If you have any questions, please contact us at [cca-pls-toolkit@cs.ucl.ac.uk](mailto:cca-pls-toolkit@cs.ucl.ac.uk).
-
+Feel free to email us if you have any feedback under [cca-pls-toolkit@cs.ucl.ac.uk](mailto:cca-pls-toolkit@cs.ucl.ac.uk).
 
 ## Acknowledgements
 
-The CCA/PLS toolkit was developed at the [__Machine Learning & Neuroimaging Laboratory__](http://www.mlnl.cs.ucl.ac.uk), Centre for Medical Imaging Computing, Computer Science Department, University College London, UK. The development of the toolkit was supported by the Wellcome Trust (grant number WT102845/Z/13/Z).
+The CCA/PLS toolkit was developed at the Machine Learning & Neuroimaging Laboratory (http://www.mlnl.cs.ucl.ac.uk), Centre for Medical Imaging Computing, Computer Science Department, University College London, UK. The development of the toolkit was supported by the Wellcome Trust (grant number WT102845/Z/13/Z).
 
 ## License
 
-The toolkit code is distributed for free, but as copyright software under the terms of the GNU General Public License as published by the Free Software Foundation.
+This project is licensed under the terms of the GNU General Public License v3.0 license.
+
+Copyright © 2022 University College London
