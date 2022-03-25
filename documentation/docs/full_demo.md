@@ -2,7 +2,9 @@
 
 In the following, we will outline a complete demonstration of how to install the CCA/PLS toolkit, and generate some of the results that are presented in the accompanying tutorial paper (Mihalik et al., in review). Computation time on a single machine is about 1-3 hours.  
 
-For more details, please see the in-depth online or PDF documentation of the toolkit available at https://github.com/anaston/cca_pls_toolkit
+For more details, please see the in-depth online documentation of the toolkit available at https://anaston.github.io/cca_pls_toolkit/.
+
+
 
 ## Installation and prerequisites
 
@@ -12,7 +14,7 @@ First, if you have Git already installed, clone the repository from Github using
 git clone https://github.com/anaston/cca_pls_toolkit
 ```
 
-In case you don’t want to clone the repository via Git, you can also go to https://github.com/anaston/PLS_CCA_framework and download all scripts as a zip folder and unzip into a directory of your choice.
+In case you don’t want to clone the repository via Git, you can also go to https://github.com/anaston/cca_pls_toolkit and download all scripts as a zip folder and unzip into a directory of your choice.
 
 After the toolkit is downloaded, open MATLAB and go to the folder containing the toolkit (e.g., double-click on the toolbox folder in MATLAB). To initialize the toolkit, run the following lines in the MATLAB command window:
 
@@ -65,7 +67,7 @@ cfg.machine.simw = 'correlation-Pearson';
 
 ### Framework
 
-The `.frwork` field defines the general framework used in the analysis. We support two main approaches in the CCA/PLS toolkit. In a `holdout` machine learning framework, the data is divided into training and test sets by randomly subsampling subjects (see [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011)). In a `permutation` statistical framework, the data is not splitted, focusing on in-sample statistical evaluation (see e.g., [Smith et al. 2015](https://doi.org/10.1038/nn.4125)). In this demo, we use the holdout framework with 10 inner and 10 outer data splits. For additional details, see the reference above, the accompanying tutorial paper or the online/pdf documentation of the toolkit.
+The `.frwork` field defines the general framework used in the analysis. We support two main approaches in the CCA/PLS toolkit. In a `holdout` machine learning framework, the data is divided into training and test sets by randomly subsampling subjects (see [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011)). In a `permutation` statistical framework, the data is not splitted, focusing on in-sample statistical evaluation (see e.g., [Smith et al. 2015](https://doi.org/10.1038/nn.4125)). In this demo, we use the holdout framework with 10 inner and 10 outer data splits. For additional details, see the reference above, the accompanying tutorial paper or the online documentation of the toolkit.
 
 ```MATLAB
 % Framework settings
@@ -76,7 +78,7 @@ cfg.frwork.split.nin = 10;
 
 ### Deflation
 
-Next, we set the deflation of SPLS. In this demo, We will use PLS-mode A deflation. For more details on deflation strategies, see the accompanying tutorial paper or the online/pdf documentation of the toolkit.
+Next, we set the deflation of SPLS. In this demo, We will use PLS-mode A deflation. For more details on deflation strategies, see the accompanying tutorial paper or the online documentation of the toolkit.
 
 ```MATLAB
 % Deflation settings
