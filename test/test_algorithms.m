@@ -87,14 +87,15 @@ end
 px3 = pls2(trdata.X, trdata.Y, 2, 1e-5);
 
 % PLS with toolkit's spls.m function - first associative effect
+cfg = struct('machine', struct('spls', struct('tol', 1e-5, 'maxiter', 100)));
 param = struct('L1x', 0, 'L1y', 0);
-[wx4, ~] = spls(trdata, param, 1e-5, 100);
+[wx4, ~] = spls(cfg, trdata, param);
 px4 = trdata.X * wx4;
 
 % PLS with toolkit's spls.m function - deflation and second associative effect
 p = trdata.X' * (trdata.X * wx4) / ((trdata.X * wx4)' * (trdata.X * wx4)); % loading
 trdata = deflation('pls-regression', trdata, 'X', wx4, p);
-[wx4(:,2), ~] = spls(trdata, param, 1e-5, 100);
+[wx4(:,2), ~] = spls(cfg, trdata, param);
 px4(:,2) = trdata.X * wx4(:,2);
 
 % Compare scores
