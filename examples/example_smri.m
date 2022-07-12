@@ -52,18 +52,22 @@ function example_smri
 % set_path('aal', 'brainnet');
 % 
 % % Create AAL labels for simulated sMRI data
-% BrainNet_GenCoord(which('AAL2.nii'), 'AAL.txt');
-% T = readtable('AAL.txt');
-% nROI = size(T, 1);
-% T.Properties.VariableNames([1:3 6]) = {'X' 'Y' 'Z' 'Index'};
-% T.Label = [1:nROI]';
-% writetable(T(:,[1:3 6:7]), fullfile(data_dir, 'LabelsX.csv'));
-% delete AAL.txt;
+% if ~exist(fullfile(data_dir, 'LabelsX.csv'), 'file')
+%     BrainNet_GenCoord(which('AAL2.nii'), 'AAL.txt');
+%     T = readtable('AAL.txt');
+%     nROI = size(T, 1);
+%     T.Properties.VariableNames([1:3 6]) = {'X' 'Y' 'Z' 'Index'};
+%     T.Label = [1:nROI]';
+%     writetable(T(:,[1:3 6:7]), fullfile(data_dir, 'LabelsX.csv'));
+%     delete AAL.txt;
+% end
 % 
 % % Create labels for fake behavioural data
-% T = table([1:100]', [repmat({'Domain 1'}, 50, 1); repmat({'Domain 2'}, 50, 1)], ...
-% 'VariableNames', {'Label' 'Category'});
-% writetable(T, fullfile(data_dir, 'LabelsY.csv'));
+% if ~exist(fullfile(data_dir, 'LabelsY.csv'), 'file')
+%     T = table([1:100]', [repmat({'Domain 1'}, 50, 1); repmat({'Domain 2'}, 50, 1)], ...
+%         'VariableNames', {'Label' 'Category'});
+%     writetable(T, fullfile(data_dir, 'LabelsY.csv'));
+% end
 % ```
 %
 % # Analysis
@@ -302,18 +306,22 @@ end
 set_path('aal', 'brainnet');
 
 % Create AAL labels for simulated sMRI data
-BrainNet_GenCoord(which('AAL2.nii'), 'AAL.txt');
-T = readtable('AAL.txt');
-nROI = size(T, 1);
-T.Properties.VariableNames([1:3 6]) = {'X' 'Y' 'Z' 'Index'};
-T.Label = [1:nROI]';
-writetable(T(:,[1:3 6:7]), fullfile(data_dir, 'LabelsX.csv'));
-delete AAL.txt;
+if ~exist(fullfile(data_dir, 'LabelsX.csv'), 'file')
+    BrainNet_GenCoord(which('AAL2.nii'), 'AAL.txt');
+    T = readtable('AAL.txt');
+    nROI = size(T, 1);
+    T.Properties.VariableNames([1:3 6]) = {'X' 'Y' 'Z' 'Index'};
+    T.Label = [1:nROI]';
+    writetable(T(:,[1:3 6:7]), fullfile(data_dir, 'LabelsX.csv'));
+    delete AAL.txt;
+end
 
 % Create labels for fake behavioural data
-T = table([1:100]', [repmat({'Domain 1'}, 50, 1); repmat({'Domain 2'}, 50, 1)], ...
-    'VariableNames', {'Label' 'Category'});
-writetable(T, fullfile(data_dir, 'LabelsY.csv'));
+if ~exist(fullfile(data_dir, 'LabelsY.csv'), 'file')
+    T = table([1:100]', [repmat({'Domain 1'}, 50, 1); repmat({'Domain 2'}, 50, 1)], ...
+        'VariableNames', {'Label' 'Category'});
+    writetable(T, fullfile(data_dir, 'LabelsY.csv'));
+end
 
 %----- Analysis
 
