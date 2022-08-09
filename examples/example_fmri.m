@@ -14,7 +14,7 @@ function example_fmri
 % the signal to be sparse with 10% of the features in each modality that 
 % are relevant to capture the association across modalities. The noise 
 % parameter of the model is set to 1. For further details on the generative 
-% model, see Mihalik et al. in review.
+% model, see [Mihalik et al. 2022](https://doi.org/10.1016/j.bpsc.2022.07.012).
 %
 % ```matlab
 % %----- Generate data
@@ -160,8 +160,8 @@ function example_fmri
 % __omnibus hypothesis__ is used, which tests if any outer split is 
 % significant after adjusting the threshold with Bonferroni correction 
 % (e.g., p=0.01 in case of 5 splits). This approach is based on 
-% [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011)
-% For quicker results, we wet the number of permutations to 100, however, 
+% [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011).
+% For quicker results, we set the number of permutations to 100, however, 
 % we recommend using at least 1000 permutations in general. 
 % 
 % ```matlab

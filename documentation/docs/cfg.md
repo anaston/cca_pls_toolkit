@@ -25,7 +25,7 @@ Essential paths to your project, framework and processed data. The project folde
 Algorithm to be used, its settings and information about hyperparameter 
 optimization. Please make sure that you are familiar with the
 hyperparameter settings of the chosen algorithm, e.g. range and scale of
-hyperparameter values for grid search or number of PCA components. We strongly encourage to use [RCCA](../background/#regularized-cca-rcca), [SPLS](../background/#sparse-pls-spls) or [PCA-CCA](../background/#cca-with-pca-dimensionality-reduction-pca-cca). For a discussion, see Mihalik et al., under review.
+hyperparameter values for grid search or number of PCA components. We strongly encourage to use [RCCA](../background/#regularized-cca-rcca), [SPLS](../background/#sparse-pls-spls) or [PCA-CCA](../background/#cca-with-pca-dimensionality-reduction-pca-cca). For a discussion, see [Mihalik et al. 2022](https://doi.org/10.1016/j.bpsc.2022.07.012).
 
 *   **.name** [*'cca', 'rcca', 'pls', 'spls'*]
   
@@ -49,7 +49,7 @@ hyperparameter values for grid search or number of PCA components. We strongly e
 
     in general, we recommend using `'correl'` (measuring the generalizability of the model) or `'correl+simwxy'` (measuring the stability and the generalizability of the model) for [SPLS](../background/#sparse-pls-spls)
     
-    `'correl+simwxy'` calculates a 2-dimensional Euclidean distance from {1,1} based on out-of-sample correlation and the average similarity of $\mathbf{w}_x$ and $\mathbf{w}_y$ (i.e., it measures the deviation from perfect out-of-sample generalizability and perfect model stability, for details, see [Mihalik et al 2020](https://doi.org/10.1016/j.biopsych.2019.12.001))
+    `'correl+simwxy'` calculates a 2-dimensional Euclidean distance from {1,1} based on out-of-sample correlation and the average similarity of $\mathbf{w}_x$ and $\mathbf{w}_y$ (i.e., it measures the deviation from perfect out-of-sample generalizability and perfect model stability, for details, see [Mihalik et al. 2020](https://doi.org/10.1016/j.biopsych.2019.12.001))
     
 *   **.param.name** [*cell array*]
   
@@ -165,11 +165,11 @@ where $c_x$ is the hyperparameter (i.e., `cfg.machine.param.VARx`), $a$ is the s
 
 *   **.spls.tol** [*int --> 1e-5*]
   
-    tolerance during SPLS convergence (for details, see [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011)
+    tolerance during SPLS convergence (for details, see [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011))
     
 *   **.spls.maxiter** [*int --> 100*]
   
-    maximum number of iterations during SPLS convergence (for details, see [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011)
+    maximum number of iterations during SPLS convergence (for details, see [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011))
 
 *   **.simw** [*char*]
 
@@ -180,13 +180,13 @@ where $c_x$ is the hyperparameter (i.e., `cfg.machine.param.VARx`), $a$ is the s
     `'overlap-corrected'` and `'overlap-uncorrected'` calculate the overlap between each pair of sparse weigths in [SPLS](../background/#sparse-pls-spls) (for details, see [Baldassarre et al. 2017](https://www.frontiersin.org/articles/10.3389/fnins.2017.00062/full), [Mihalik et al. 2020](https://doi.org/10.1016/j.biopsych.2019.12.001)).
 
 ###  frwork
-Details of framework with two main approaches. Divide data to training 
-and test sets using single or multiple holdouts (for details, see [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011)) by randomly 
-subsampling subjects. Otherwise, use a permutation approach without any data splitting (see e.g., [Smith et al. 2015](https://doi.org/10.1038/nn.4125)). The default values will change depending on the type of the framework.
+Details of framework with two main approaches. In the predictive (or machine learning) framework, the model is fitted on a training set and evaluated on a holdout set, and the statistical inference is based on out-of-sample correlation. In the descriptive framework, the model is fitted on the entire data, thus the statistical inference is based on in-sample correlation. The default values will change depending on the type of the framework. For further details on frameworks, see [Analysis frameworks](../background/#analysis-frameworks) and [Mihalik et al. 2022](https://doi.org/10.1016/j.bpsc.2022.07.012).
 
 *   **.name** [*'holdout', 'permutation'*]
   
     type of the framework
+
+    note that `permutation` refers for the descriptive framework, even though both frameworks use permutation testing for statistical inference
     
 *   **.flag** [*char*]
   

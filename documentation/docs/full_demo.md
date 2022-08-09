@@ -1,8 +1,8 @@
 # Full demonstration using simulated data
 
-In the following, we will outline a complete demonstration of how to install the CCA/PLS toolkit, and generate some of the results that are presented in the accompanying tutorial paper (Mihalik et al., in review). Computation time on a single machine is about 1-3 hours.  
+In the following, we will outline a complete demonstration of how to install the CCA/PLS toolkit, and generate some of the results that are presented in the accompanying tutorial paper ([Mihalik et al. 2022](https://doi.org/10.1016/j.bpsc.2022.07.012)). Computation time on a single machine is about 1-3 hours.  
 
-For more details, please see the in-depth online documentation of the toolkit available at https://anaston.github.io/cca_pls_toolkit/.
+For more details, please see the in-depth online documentation of the toolkit available at [https://anaston.github.io/cca_pls_toolkit/](https://anaston.github.io/cca_pls_toolkit/).
 
 
 
@@ -14,7 +14,7 @@ First, if you have Git already installed, clone the repository from Github using
 git clone https://github.com/anaston/cca_pls_toolkit
 ```
 
-In case you don’t want to clone the repository via Git, you can also go to https://github.com/anaston/cca_pls_toolkit and download all scripts as a zip folder and unzip into a directory of your choice.
+In case you don’t want to clone the repository via Git, you can also go to [https://github.com/anaston/cca_pls_toolkit](https://github.com/anaston/cca_pls_toolkit) and download all scripts as a zip folder and unzip into a directory of your choice.
 
 After the toolkit is downloaded, open MATLAB and go to the folder containing the toolkit (e.g., double-click on the toolbox folder in MATLAB). To initialize the toolkit, run the following lines in the MATLAB command window:
 
@@ -25,7 +25,7 @@ set_path;
 
 ### Dependencies
 
-For this demonstration, we need to add an additional MATLAB toolbox (PALM). For this, download PALM manually using this link (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM/UserGuide), copy the `PALM` folder into the `external` folder of the CCA/PLS toolkit, then finally add PALM to the MATLAB path using the following line in the MATLAB command window:
+For this demonstration, we need to add an additional MATLAB toolbox (PALM). For this, download PALM manually using this link ([https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM/UserGuide](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM/UserGuide)), copy the `PALM` folder into the `external` folder of the CCA/PLS toolkit, then finally add PALM to the MATLAB path using the following line in the MATLAB command window:
 
 ```MATLAB
 set_path('PALM');
@@ -54,7 +54,7 @@ The data used in this demo has already been created and saved to a folder under 
 
 ###  Machine
 
-For this demo, we will use an SPLS algorithm. All CCA/PLS models and their settings  (e.g., amount or regularization) can be specified using the `.machine` field of the `cfg` structure. In this case, we will set the `machine.name` field to 'spls' to run SPLS. The metrics used to evaluate the CCA/PLS algorithms can be defined in the `.machine.metric` field of the `cfg` structure.  Here, we specify in-sample correlation ('trcorrel'), out-of-sample correlation ('correl') measuring the generalizability of the model, similarity of the X and Y weights ('simwx', 'simwy') measuring the stability of the model across different training sets of data as well as the explained variance in the training set of X and Y ('trexvarx', 'trexvary'). To select the best hyperparameter (i.e., L1-norm regularization for SPLS), we will use generalizability (measured as average out-of-sample correlation on the validation sets) as optimization criterion. This is set by `.machine.param.crit = correl`. Finally, `.machine.simw` defines the type of similarity measure used to assess the stability of model weights across splits. We set this to 'correlation-Pearson' which will calculate Pearson correlation between each pair of weights.
+For this demo, we will use an SPLS algorithm. All CCA/PLS models and their settings  (e.g., amount or regularization) can be specified using the `.machine` field of the `cfg` structure. In this case, we will set the `machine.name` field to 'spls' to run SPLS. The metrics used to evaluate the CCA/PLS algorithms can be defined in the `.machine.metric` field of the `cfg` structure.  Here, we specify in-sample correlation ('trcorrel'), out-of-sample correlation ('correl') measuring the generalizability of the model, similarity of the X and Y weights ('simwx', 'simwy') measuring the stability of the model across different training sets of data as well as the explained variance in the training set of X and Y ('trexvarx', 'trexvary'). To select the best hyperparameter (i.e., L1-norm regularization for SPLS), we will use generalizability (measured as average out-of-sample correlation on the validation sets) as optimization criterion. This is set by `.machine.param.crit = 'correl'`. Finally, `.machine.simw` defines the type of similarity measure used to assess the stability of model weights across splits. We set this to 'correlation-Pearson' which will calculate Pearson correlation between each pair of weights.
 
 ```MATLAB
 % Machine settings
@@ -67,7 +67,7 @@ cfg.machine.simw = 'correlation-Pearson';
 
 ### Framework
 
-The `.frwork` field defines the general framework used in the analysis. We support two main approaches in the CCA/PLS toolkit. In a `holdout` machine learning framework, the data is divided into training and test sets by randomly subsampling subjects (see [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011)). In a `permutation` statistical framework, the data is not splitted, focusing on in-sample statistical evaluation (see e.g., [Smith et al. 2015](https://doi.org/10.1038/nn.4125)). In this demo, we use the holdout framework with 10 inner and 10 outer data splits. For additional details, see the reference above, the accompanying tutorial paper or the online documentation of the toolkit.
+The `.frwork` field defines the general framework used in the analysis. We support two main approaches in the CCA/PLS toolkit. In a 'holdout' predictive (or machine learning) framework, the data is divided into training and test sets by randomly subsampling subjects (see [Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011)). In a 'permutation' descriptive framework, the data is not splitted, focusing on in-sample statistical evaluation (see e.g., [Smith et al. 2015](https://doi.org/10.1038/nn.4125)). In this demo, we use the holdout framework with 10 inner and 10 outer data splits. For additional details, see the reference above, the accompanying tutorial paper ([Mihalik et al. 2022](https://doi.org/10.1016/j.bpsc.2022.07.012)) or [here](../background/#analysis-frameworks).
 
 ```MATLAB
 % Framework settings

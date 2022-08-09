@@ -13,7 +13,7 @@ will use 1000 examples and 100 features in both data modalities. We set
 the signal to be sparse with 10% of the features in each modality that 
 are relevant to capture the association across modalities. The noise 
 parameter of the model is set to 1. For further details on the generative 
-model, see Mihalik et al. in review.
+model, see [Mihalik et al. 2022](https://doi.org/10.1016/j.bpsc.2022.07.012).
 
 ```matlab
 %----- Generate data
@@ -67,7 +67,8 @@ generalizability (measured as average out-of-sample corretion on the
 validation sets) and stability (measured as the avarage similarity of 
 weights across the inner training sets) as a joint optimization criterion. 
 This is set by `machine.param.crit = correl+simwxy`. For further details 
-on this criterion, see [Mihalik et al. (2020)](https://doi.org/10.1016/j.biopsych.2019.12.001)
+on this criterion, see [Mihalik et al.
+(2020)](https://doi.org/10.1016/j.biopsych.2019.12.001).
 
 ```matlab
 % Machine settings
@@ -114,7 +115,7 @@ For further details on the environmental settings, see [here](../../cfg/#env).
 
 ###  Statistical inference
 Finally, we need to define how the statistical inference is performed. 
-For quicker results, we wet the number of permutations to 100, however, 
+For quicker results, we set the number of permutations to 100, however, 
 we recommend using at least 1000 permutations in general. 
 
 ```matlab
@@ -177,7 +178,7 @@ plotted as a function of the hyperparameter grid and in a separate
 subplot. In this example, we plot the test (out-of-sample) correlation 
 and the joint generalizability-stability criterion (`dist2`), which was 
 used for selecting the best hyperparameter. For more details, see
-[Mihalik et al. (2020)](https://doi.org/10.1016/j.biopsych.2019.12.001)
+[Mihalik et al. (2020)](https://doi.org/10.1016/j.biopsych.2019.12.001).
 
 ```matlab
 % Plot hyperparameter surface for grid search results
