@@ -6,7 +6,7 @@ The toolkit includes various options for CCA/PLS models (e.g., standard CCA, sta
 
 Although there are methods to estimate all weights (or __associative effects__) for most CCA/PLS models at once, the toolkit uses an interative solution to be able to optimize the hyperparameters of the model (i.e., number of principal components or regularization parameters) for each associative effect independently. In such iterative solution, the CCA/PLS model estimates one pair of weights (one weight for each data modality) at a time. These associative effects are then removed from the data (by a process called deflation) and the same process is repeated multiple times. The iterative solution also allows to estimate different PLS variants by choosing a specific deflation.
 
-For a short theoretical introduction to the CCA/PLS models, analytic frameworks and deflation methods used in the toolkit, see background. For further reading, see:
+For a short theoretical introduction to the CCA/PLS models, analytic frameworks and deflation methods used in the toolkit, see the link to the online documentation below. For further reading, see:
 
 - Shawe-Taylor J, Cristianini N (2004) [Kernel Methods for Pattern Analysis.](https://kernelmethods.blogs.bristol.ac.uk) Cambridge: Cambridge University Press.
 
@@ -19,6 +19,8 @@ For a short theoretical introduction to the CCA/PLS models, analytic frameworks 
 - Mihalik A, Ferreira FS, Moutoussis M et al. (2020) [Multiple Holdouts With Stability: Improving the Generalizability of Machine Learning Analyses of Brain-Behavior Relationships.](https://doi.org/10.1016/j.biopsych.2019.12.001) Biol. Psychiatry 87, 368-376.
 
 - Winkler AM, Renaud O, Smith SM, Nichols TE (2020) [Permutation inference for canonical correlation analysis.](https://doi.org/10.1016/j.neuroimage.2020.117065) Neuroimage 220, 117065
+
+- Mihalik A, Chapman J, Adams RA et al. (2022) [Canonical Correlation Analysis and Partial Least Squares for identifying brain-behaviour associations: a tutorial and a comparative study.](https://doi.org/10.1016/j.bpsc.2022.07.012) Biol. Psychiatry Cogn. Neurosci. Neuroimaging doi: https://doi.org/10.1016/j.bpsc.2022.07.012
 
 ## Documentation
 
