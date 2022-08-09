@@ -20,6 +20,8 @@ For a short theoretical introduction to the CCA/PLS models, analytic frameworks 
 
 - Winkler AM, Renaud O, Smith SM, Nichols TE (2020) [Permutation inference for canonical correlation analysis.](https://doi.org/10.1016/j.neuroimage.2020.117065) Neuroimage 220, 117065
 
+- Mihalik A, Chapman J, Adams RA et al. (2022) [Canonical Correlation Analysis and Partial Least Squares for identifying brain-behaviour associations: a tutorial and a comparative study.](https://doi.org/10.1016/j.bpsc.2022.07.012) Biol. Psychiatry Cogn. Neurosci. Neuroimaging doi: https://doi.org/10.1016/j.bpsc.2022.07.012
+
 Please use the menu on the left to get started with the toolkit.
 
 ## Contributors

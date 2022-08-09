@@ -13,8 +13,7 @@ will use 1000 examples, 120 features in the brain modality and 100
 features in the behavioural modality. We set the signal to be sparse with 
 10% of the features in each modality that are relevant to capture the 
 association across modalities. The noise parameter of the model is set to 
-1. For further details on the generative model, see Mihalik et al. in 
-review.
+1. For further details on the generative model, see [Mihalik et al. 2022](https://doi.org/10.1016/j.bpsc.2022.07.012).
 
 ```matlab
 %----- Generate data
@@ -51,18 +50,24 @@ simply use indexes for `Label` and 2 domains as `Category`.
 set_path('aal', 'brainnet');
 
 % Create AAL labels for simulated sMRI data
-BrainNet_GenCoord(which('AAL2.nii'), 'AAL.txt');
-T = readtable('AAL.txt');
-nROI = size(T, 1);
-T.Properties.VariableNames([1:3 6]) = {'X' 'Y' 'Z' 'Index'};
-T.Label = [1:nROI]';
-writetable(T(:,[1:3 6:7]), fullfile(data_dir, 'LabelsX.csv'));
-delete AAL.txt;
+if ~exist(fullfile(data_dir, 'LabelsX.csv'), 'file')
+
+        BrainNet_GenCoord(which('AAL2.nii'), 'AAL.txt');
+        T = readtable('AAL.txt');
+        nROI = size(T, 1);
+        T.Properties.VariableNames([1:3 6]) = {'X' 'Y' 'Z' 'Index'};
+        T.Label = [1:nROI]';
+        writetable(T(:,[1:3 6:7]), fullfile(data_dir, 'LabelsX.csv'));
+        delete AAL.txt;
+end
 
 % Create labels for fake behavioural data
-T = table([1:100]', [repmat({'Domain 1'}, 50, 1); repmat({'Domain 2'}, 50, 1)], ...
-'VariableNames', {'Label' 'Category'});
-writetable(T, fullfile(data_dir, 'LabelsY.csv'));
+if ~exist(fullfile(data_dir, 'LabelsY.csv'), 'file')
+
+        T = table([1:100]', [repmat({'Domain 1'}, 50, 1); repmat({'Domain 2'}, 50, 1)], ...
+            'VariableNames', {'Label' 'Category'});
+        writetable(T, fullfile(data_dir, 'LabelsY.csv'));
+end
 ```
 
 ##  Analysis
@@ -130,7 +135,7 @@ For further details on the environmental settings, see [here](../../cfg/#env).
 
 ###  Statistical inference
 Finally, we need to define how the significance testing is performed. 
-For quicker results, we wet the number of permutations to 100, however, 
+For quicker results, we set the number of permutations to 100, however, 
 we recommend using at least 1000 permutations in general. 
 
 ```matlab

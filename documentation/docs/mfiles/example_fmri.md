@@ -13,7 +13,7 @@ will use 1000 examples and 100 features in both data modalities. We set
 the signal to be sparse with 10% of the features in each modality that 
 are relevant to capture the association across modalities. The noise 
 parameter of the model is set to 1. For further details on the generative 
-model, see Mihalik et al. in review.
+model, see [Mihalik et al. 2022](https://doi.org/10.1016/j.bpsc.2022.07.012).
 
 ```matlab
 %----- Generate data
@@ -53,25 +53,34 @@ domains as `Category`.
 set_path('aal', 'brainnet');
 
 % Create AAL labels for full simulated fMRI connectivity data
-BrainNet_GenCoord(which('AAL2.nii'), 'AAL.txt');
-T = readtable('AAL.txt');
-nROI = size(T, 1);
-T.Properties.VariableNames([1:3 6]) = {'X' 'Y' 'Z' 'Index'};
-T.Label = sprintfc('Region-%d', [1:nROI]');
-writetable(T(:,[1:3 6:7]), fullfile(data_dir, 'LabelsX.csv'));
-delete AAL.txt; % clean up
+if ~exist(fullfile(data_dir, 'LabelsX.csv'), 'file')
+
+        BrainNet_GenCoord(which('AAL2.nii'), 'AAL.txt');
+        T = readtable('AAL.txt');
+        nROI = size(T, 1);
+        T.Properties.VariableNames([1:3 6]) = {'X' 'Y' 'Z' 'Index'}; % we will need only these variables
+        T.Label = sprintfc('Region-%d', [1:nROI]'); % we need characters for this label
+        writetable(T(:,[1:3 6:7]), fullfile(data_dir, 'LabelsX.csv'));
+        delete AAL.txt; % clean up
+end
 
 % Create mask for subset of 100 connections used as features in input data
-mask = false(nROI);
-full_mask_id = find(tril(true(nROI), -1));
-rand_id = randperm(numel(full_mask_id));
-mask(rand_id(1:100)) = 1;
-save(fullfile(data_dir, 'mask.mat'), 'mask');
+if ~exist(fullfile(data_dir, 'mask.mat'), 'file')
+
+        mask = false(nROI);
+        full_mask_id = find(tril(true(nROI), -1));
+        rand_id = randperm(numel(full_mask_id));
+        mask(rand_id(1:100)) = 1;
+        save(fullfile(data_dir, 'mask.mat'), 'mask');
+end
 
 % Create labels for behavioural data
-T = table([1:100]', [repmat({'Domain 1'}, 50, 1); repmat({'Domain 2'}, 50, 1)], ...
-'VariableNames', {'Label' 'Category'});
-writetable(T, fullfile(data_dir, 'LabelsY.csv'));
+if ~exist(fullfile(data_dir, 'LabelsY.csv'), 'file')
+
+        T = table([1:100]', [repmat({'Domain 1'}, 50, 1); repmat({'Domain 2'}, 50, 1)], ...
+            'VariableNames', {'Label' 'Category'});
+        writetable(T, fullfile(data_dir, 'LabelsY.csv'));
+end
 ```
 
 ##  Analysis
@@ -149,8 +158,8 @@ Second, to infer if the associative effect is significant across splits,
 __omnibus hypothesis__ is used, which tests if any outer split is 
 significant after adjusting the threshold with Bonferroni correction 
 (e.g., p=0.01 in case of 5 splits). This approach is based on 
-[Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011)
-For quicker results, we wet the number of permutations to 100, however, 
+[Monteiro et al. 2016](https://doi.org/10.1016/j.jneumeth.2016.06.011).
+For quicker results, we set the number of permutations to 100, however, 
 we recommend using at least 1000 permutations in general. 
 
 ```matlab
