@@ -1,11 +1,21 @@
 function S = parse_input(S, varargin)
-% parse_input 
-% assigns Name-Value pairs in varargin to a structure with
-% fields of 'Name' and value of 'Value'
+% parse_input
+%
+% Assigns Name-Value pairs in varargin to a structure with fields of
+% 'Name' and value of 'Value'
 %
 % Notes:
 % 1. dot delimited Name string can be used for nested structure
-% 2. this function is the inverse operation of name_value = parse_struct(S)
+% 2. this function is the inverse operation of parse_struct
+%
+% # Syntax
+%   S = parse_input(S, varargin)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Initialize structure
 if isempty(S)

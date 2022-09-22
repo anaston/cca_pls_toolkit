@@ -1,14 +1,27 @@
 function fname = getfname(folder, expression)
 % getfname
-% fname = getfname(folder, expression)
-%   getfname  lists all the file/folder names to a cell array that match the 
-% character pattern specified by the regular expression
 %
-%   Input:
-%       folder     = folder name in which we want to list files/subfolders
-%       expression = character pattern specified by regular expression
-%   Output:
-%       fname = cell array of file/folder names
+% It lists all the file/folder names to a cell array that match the 
+% character pattern specified by the regular expression.
+%
+% # Syntax
+%   fname = getfname(folder, expression)
+%
+% # Inputs
+% folder:: char
+%   folder name in which we want to list files/subfolders
+% expression:: char
+%   character pattern specified by regular expression
+%
+% # Outputs
+% fname:: cell array
+%   cell array of file/folder names
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % List all files in the folder
 files = dir(folder);

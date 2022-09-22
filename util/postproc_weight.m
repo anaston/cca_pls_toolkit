@@ -1,4 +1,14 @@
 function [weight, iweight] = postproc_weight(res, weight, modtype)
+% postproc_weight
+%
+% # Syntax
+%   [weight, iweight] = postproc_weight(res, weight, modtype)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Sort weights if requested
 if strcmp(res.(modtype).weight.sorttype, '')

@@ -1,4 +1,14 @@
 function normalize2MNI(res, template, weight, transM)
+% normalize2MNI
+%
+% # Syntax
+%   normalize2MNI(res, template, weight, transM)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Handle path to template
 [template_path, name, ext] = fileparts(template);

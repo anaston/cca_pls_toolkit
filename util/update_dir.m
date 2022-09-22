@@ -20,6 +20,12 @@ function update_dir(dir_frwork, fileend)
 %
 % --- 
 % See also: [cfg](../../cfg)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 if ismember(dir_frwork(end), {'/' '\'})
     dir_frwork(end) = [];

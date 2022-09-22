@@ -1,4 +1,14 @@
 function featid = get_featid(data, param, mod)
+% get_featid
+%
+% # Syntax
+%   featid = get_featid(data, param, mod)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 if isfield(param, (['VAR' lower(mod)]))
     % Reduce dimensionality by explained variance

@@ -1,30 +1,19 @@
 function [wX, wY] = rcca(data, featid, param)
 % rcca
 %
-% Implementation for Regularized CCA
+% Implementation for PCA-CCA, CCA and Regularized CCA and PLS
 %
-% Syntax:  [wX, wY] = rcca(data, featid, param)
+% # Syntax
+%   [wX, wY] = rcca(data, featid, param)
 %
-% # Inputs
-% input1:: Description
-% input2:: Description
-% input3:: Description
+% ---
+% See also: [spls](../spls/), [fastsvd](../fastsvd/)
 %
-% # Outputs
-% output1:: Description
-% output2:: Description
-%
-% # Example
-%    Line 1 of example
-%    Line 2 of example
-%    Line 3 of example
-%
-%
-% See also: [spls](../spls/)
-%
-% Author: Agoston Mihalik
-%
-% Website: http://www.mlnl.cs.ucl.ac.uk/
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Calculate covariance/cross-covariance matrices
 BYY = (1-param.L2y) * data.LY(featid.y) + repmat(param.L2y, sum(featid.y), 1);

@@ -1,4 +1,14 @@
 function [trdata, tedata] = deflate_data(res, trdata, tedata, m, osplit)
+% deflate_data
+%
+% # Syntax
+%   [trdata, tedata] = deflate_data(res, trdata, tedata, m, osplit)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Load cfg
 cfg = loadmat(res, fullfile(res.dir.frwork, 'cfg.mat'), 'cfg');

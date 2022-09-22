@@ -19,6 +19,12 @@ function cleanup_files(cfg)
 %
 % ---
 % See also: [cfg](../../cfg)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 lv = 1;
 while exist_file(cfg, fullfile(cfg.dir.frwork, 'res', sprintf('level%d', lv), 'res.mat'))

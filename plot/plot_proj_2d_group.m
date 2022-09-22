@@ -1,7 +1,14 @@
 function plot_proj_2d_group(res, P, fname, grp, lg)
 % plot_proj_2d_group
 %
-% Syntax:  plot_proj_2d_group(res, P, fname, grp, lg)
+% # Syntax
+%   plot_proj_2d_group(res, P, fname, grp, lg)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Input checks
 ug = unique(grp);

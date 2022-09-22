@@ -9,7 +9,7 @@ function [X, Y, wX, wY] = generate_data(nexamples, nfeatx, nfeaty, activex, acti
 % associated with a Gaussian latent variable.
 %
 % # Syntax
-%   generate_data(nexamples, nfeatx, nfeaty, activex, activey, noise)
+%   [X, Y, wX, wY] = generate_data(nexamples, nfeatx, nfeaty, activex, activey, noise)
 %
 % # Inputs
 % nexamples:: int
@@ -47,7 +47,12 @@ function [X, Y, wX, wY] = generate_data(nexamples, nfeatx, nfeaty, activex, acti
 %   [X, Y, wX, wY] = generate_data(1000, 100, 100, 10, 10, 1);
 %
 % ---
-% Author: James Chapman
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by James Chapman (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$ 
 
 z = normrnd(0,1,nexamples,1); %generate a random gaussian latent variable
 wX=rand(1,nfeatx); %now generate some random weights that project from the latent variable space to the data space

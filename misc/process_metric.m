@@ -1,5 +1,16 @@
 function S = process_metric(cfg, S, runtype)
-%   Process outputs of machines
+% process_metric
+%
+% Processes outputs of machines.
+%
+% # Syntax
+%   S = process_metric(cfg, S, runtype)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$   
 
 for i=1:numel(cfg.data.mod)
     m = cfg.data.mod{i}; % shorthand variable

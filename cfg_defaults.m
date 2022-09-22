@@ -37,6 +37,12 @@ function cfg = cfg_defaults(cfg, varargin)
 %
 % ---
 % See also: [cfg](../../cfg), [res_defaults](../res_defaults/)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 def = parse_input([], varargin{:});
 

@@ -1,6 +1,17 @@
 function data = preproc_data(res, data, mod, fname, trid)
-% ADD Gaussianization if requested
-% Code might be simplified and made more transparent + efficient
+% preproc_data
+%
+% # Syntax
+%   data = preproc_data(res, data, mod, fname, trid)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
+
+% TODO: add Gaussianization as option
+%       code might be simplified and made more transparent + efficient
 
 % Load cfg
 cfg = loadmat(res, fullfile(res.dir.frwork, 'cfg.mat'), 'cfg');

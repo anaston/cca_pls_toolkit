@@ -1,6 +1,14 @@
 function compile_files(res, files)
 % compile_files
-%   Some description here
+%
+% # Syntax
+%   compile_files(res, files)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Load cfg
 cfg = loadmat(res, fullfile(res.dir.frwork, 'cfg.mat'), 'cfg');

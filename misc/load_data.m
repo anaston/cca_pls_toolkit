@@ -1,4 +1,14 @@
 function varargout = load_data(res, mod, splittype, split, param)
+% load_data
+%
+% # Syntax
+%   varargout = load_data(res, mod, splittype, split, param)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Load cfg
 cfg = loadmat(res, fullfile(res.dir.frwork, 'cfg.mat'), 'cfg');

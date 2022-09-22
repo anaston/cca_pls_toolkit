@@ -1,15 +1,17 @@
 function [S_avg, S_square, S] = calc_stability(W, type, subtype)
-%   calc_stability calculates the stability/similarity across weights, see 
-% Baldassare et al 2017
+% calc_stability
 %
-% In particular, it calculates the pairwise correlations for non-sparse
-% weights and the pairwise relative overlaps for sparse weights.
+% Calculates the stability/similarity across weights (see Baldassare et al.
+% 2017).
 %
-% Input: W       = matrix of weight vectors as columns
-%        type    = 'correlation' or 'overlap'
-%        subtype = 'corrected'/'uncorrected' for type of overlap
+% Syntax:
+%   [S_avg, S_square, S] = calc_stability(W, type, subtype)
 %
-% Output: S_avg = average pairwise stability/similarity per data split
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 if strcmp(type, 'overlap') && ~exist('subtype', 'var')
     subtype = 'corrected'; % default option

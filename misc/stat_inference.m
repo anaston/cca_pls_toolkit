@@ -1,4 +1,14 @@
 function [res, metric, permdist] = stat_inference(res)
+% stat_inference
+%
+% # Syntax
+%   [res, metric, permdist] = stat_inference(res)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Quit if no permutations needed
 if res.stat.nperm == 0

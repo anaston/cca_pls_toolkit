@@ -1,7 +1,14 @@
 function plot_weight_stem(res, weight, iweight, wfname, mod)
 % plot_weight_stem
 %
-% Syntax:  plot_weight_stem(weight, wfname)
+% # Syntax
+%   plot_weight_stem(res, weight, iweight, wfname, mod)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Open figure
 if ~isempty(res.gen.figure.Position)

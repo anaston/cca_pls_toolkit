@@ -47,6 +47,12 @@ function res = res_defaults(res, mode, varargin)
 %
 % ---
 % See also: [res](../../res), [cfg_defaults](../cfg_defaults/)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 def = parse_input([], varargin{:});
 

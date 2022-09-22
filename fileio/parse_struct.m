@@ -1,10 +1,20 @@
 function name_value = parse_struct(S, dim, fields)
-% parse_struct 
-% decomposes structure with fields and values into a cell 
-% array with 'Name' and 'Value' pairs
+% parse_input
+%
+% Decomposes structure with fields and values into a cell array with 
+% 'Name' and 'Value' pairs
 %
 % Note:
-% This function is the inverse operation of S = parse_input(varargin)
+% This function is the inverse operation of parse_input
+%
+% # Syntax
+%   S = parse_input(S, varargin)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
     
 if ~exist('fields', 'var')
     fields = fieldnames(S);

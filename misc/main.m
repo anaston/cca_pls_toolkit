@@ -1,4 +1,14 @@
 function main(res)
+% main
+%
+% # Syntax
+%   main(res)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 %----- 1. Initialize results
 

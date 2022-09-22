@@ -283,8 +283,12 @@ function example_fmri
 % ```
 %
 % ![demo_fmri_wy](../figures/example_fmri_weight_bar.png)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
 
-clc
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 %----- Generate data
 

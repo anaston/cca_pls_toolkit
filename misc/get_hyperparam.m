@@ -1,4 +1,14 @@
 function [param, S, bestid] = get_hyperparam(res, opt)
+% get_hyperparam
+%
+% # Syntax
+%   [param, S, bestid] = get_hyperparam(res, opt)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Load cfg
 if isfield(res.dir, 'frwork')
