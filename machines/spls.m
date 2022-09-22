@@ -1,14 +1,19 @@
 function [u, v] = spls(cfg, data, param)
 % spls
 %
-% Implementation for Sparse PLS
+% Implementation for PLS and Sparse PLS
 %
-% Syntax:  [u, v] = spls(cfg, data, param)
+% # Syntax
+%   [u, v] = spls(cfg, data, param)
 %
 % ---
-% See also: [rcca](../rcca/),  [fastsvd](../fastsvd/)
+% See also: [rcca](../rcca/), [fastsvd](../fastsvd/)
 %
-% Author: Joao Monteiro, Agoston Mihalik
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Joao Monteiro, Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Initialize variables
 diff = Inf;

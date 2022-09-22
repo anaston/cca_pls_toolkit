@@ -28,7 +28,14 @@ function plot_paropt(res, split, metrics, varargin)
 %
 % ---
 % See also: [plot_proj](../plot_proj), [plot_weight](../plot_weight)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
 
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
+
+% Load cfg
 cfg = loadmat(res, fullfile(res.dir.frwork, 'cfg.mat'), 'cfg');
 
 % Parse input and add default settings
@@ -161,6 +168,9 @@ switch metric
     
     case 'dist'
         str = 'Distance';
+    
+    case 'simwxy'
+        str = 'Average similarity of weigths';
     
     case 'simwx'
         str = 'Smilarity of X weights';

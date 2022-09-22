@@ -1,4 +1,14 @@
 function [trdata, tedata] = permute_data(res, trdata, tedata, osplit, iperm)
+% permute_data
+%
+% # Syntax
+%   [trdata, tedata] = permute_data(res, trdata, tedata, osplit, iperm)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Load cfg
 cfg = loadmat(res, fullfile(res.dir.frwork, 'cfg.mat'), 'cfg');

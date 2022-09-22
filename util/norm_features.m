@@ -1,34 +1,16 @@
 function [mat, varargout] = norm_features(mat, scaling, norm_fun)
-% FORMAT mat = norm_features(mat, norm_fun)
+% norm_features
 %
-% Function to normalise the features
-%   Inputs:
-%           mat       - data matrix: Number of subjects x Features
-%           norm_fun  - (string) function to be used for normalisation
-%                       default = 'norm' (L2-norm)
-%                       Other options: 'norm1' (L1-norm), any other
-%                       function that performs column-wise operations (e.g.
-%                       'std', 'sum', etc.)
+% Normalizes features.
 %
-%   Outputs:
-%           varargout
+% # Syntax
+%   [mat, varargout] = norm_features(mat, scaling, norm_fun)
 %
-%   Version: 2016-01-18
-%__________________________________________________________________________
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
 
-% Written by Joao Matos Monteiro
-% Email: joao.monteiro@ucl.ac.uk
-%
-% Adapted by Agoston Mihalik (a.mihalik@ucl.ac.uk):
-% 2019-03-18
-%   computation with function handle
-%   use precomputed scaling factor or return the currently used one
-%   bug fix for NaN values
-% 2019-06-13
-%   loop added for memory efficiency
-% 2019-07-29
-%   Normalization is not affected by NaN in the data
-%
+% Written by Joao Monteiro, Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Calculate scaling
 if ~exist('scaling', 'var') || isempty(scaling)

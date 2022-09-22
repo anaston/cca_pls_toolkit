@@ -1,6 +1,14 @@
 function [isfile, filename] = exist_file(cfg, fname, var)
 % exist_file
-%   Some description here
+%
+% # Syntax
+%   [isfile, filename] = exist_file(cfg, fname, var)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % List file
 [pathstr, name, ext] = fileparts(fname);

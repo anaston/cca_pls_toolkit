@@ -1,4 +1,14 @@
 function S = calc_exvar(cfg, trdata, tedata, S, metric, varargin)
+% calc_exvar
+%
+% Syntax:
+%   S = calc_exvar(cfg, trdata, tedata, S, metric, varargin)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 if isempty(tedata)
     data = trdata;

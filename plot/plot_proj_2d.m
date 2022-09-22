@@ -1,7 +1,14 @@
 function plot_proj_2d(res, P, fname)
 % plot_proj_2d
 %
-% Syntax:  plot_proj_2d(res, P, fname)
+% # Syntax
+%   plot_proj_2d(res, P, fname)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Create figure
 if ~isempty(res.gen.figure.Position)

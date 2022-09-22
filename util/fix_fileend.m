@@ -1,4 +1,14 @@
 function fix_fileend(cfg)
+% fix_fileend
+%
+% # Syntax
+%   fix_fileend(cfg)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 %----- Clean up data folder
 movefile(fullfile(cfg.dir.data, 'inmat.mat'), fullfile(cfg.dir.data, 'inmat_1.mat'));

@@ -1,4 +1,14 @@
 function data = concat_data(trdata, tedata, modality, trid, teid)
+% concat_data
+%
+% # Syntax
+%   data = concat_data(trdata, tedata, modality, trid, teid)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Check input
 for f=1:numel(modality)

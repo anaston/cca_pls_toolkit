@@ -1,4 +1,14 @@
 function data = impute_mat(cfg, data, trid, mod)
+% impute_mat
+%
+% # Syntax
+%   data = impute_mat(cfg, data, trid, mod)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 if any(isnan(data.(mod)(:)))
     % Display message based on verbosity level

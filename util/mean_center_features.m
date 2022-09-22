@@ -1,20 +1,16 @@
 function [mat, varargout] = mean_center_features(mat, mu)
-% FORMAT mat = mean_center_features(mat)
+% mean_center_features
 %
-% Function to mean center the features
-%   Inputs:
-%           mat - data matrix: Number of subjects x Features
+% Mean centers features.
+% 
+% # Syntax
+%   [mat, varargout] = mean_center_features(mat, mu)
 %
-%   Outputs:
-%           varargout
-%
-%   Version: 2018-09-03
-%__________________________________________________________________________
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
 
-% Written by Agoston Mihalik
-% Email: a.mihalik@ucl.ac.uk
-%
-% 2019-03-18 Agoston Mihalik return mean used for mean centering
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 if ~exist('mu', 'var')
     mu = nanmean(mat, 1);

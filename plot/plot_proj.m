@@ -72,7 +72,14 @@ function P = plot_proj(res, mod, level, sidvar, split, colour, func, varargin)
 %
 % ---
 % See also: [plot_paropt](../plot_paropt), [plot_weight](../plot_weight/)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
 
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
+
+% Load cfg
 cfg = loadmat(res, fullfile(res.dir.frwork, 'cfg.mat'), 'cfg');
 
 % Parse input and add default settings

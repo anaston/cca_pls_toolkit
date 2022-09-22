@@ -31,6 +31,12 @@ function dir_toolkit = set_path(varargin)
 %    set_path('plot', 'spm', 'brainnet');
 %
 % ---
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 dir_toolkit = fileparts(mfilename('fullpath'));
 addpath(dir_toolkit);

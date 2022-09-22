@@ -1,6 +1,16 @@
 function savemat(res, fname, varargin)
 % savemat
-% savemat(res, fname, varargin) saves .mat data with flexible filename suffix
+%
+% Saves .mat data with flexible filename suffix.
+%
+% # Syntax
+%   savemat(res, fname, varargin)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Parse input
 S = parse_input([], varargin{:});

@@ -2,29 +2,19 @@ function varargout = fastsvd(X, n, tol, exvar, varargin)
 % fastsvd
 %
 % Implementation for RAM/time-efficient Singular Value Decomposition (SVD)
+% to replace MATLAB's built-in svd function.
 %
-% Syntax:  [U, S, V, R, L] = fastsvd(X, n, tol, varex, varargin)
+% Syntax:
+%   varargout = fastsvd(X, n, tol, exvar, varargin)
 %
-% # Inputs
-% input1:: Description
-% input2:: Description
-% input3:: Description
-%
-% # Outputs
-% output1:: Description
-% output2:: Description
-%
-% # Example
-%    Line 1 of example
-%    Line 2 of example
-%    Line 3 of example
-%
-%
+% --- 
 % See also: [spls](../spls/), [rcca](../rcca/)
 %
-% Author: Agoston Mihalik
-%
-% Website: http://www.mlnl.cs.ucl.ac.uk/
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Data dimensionality
 [nrows, ncols] = size(X);

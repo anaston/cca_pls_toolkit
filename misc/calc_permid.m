@@ -1,4 +1,14 @@
 function calc_permid(res, runtype)
+% calc_permid
+%
+% # Syntax
+%   calc_permid(res, runtype)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Load cfg
 cfg = loadmat(res, fullfile(res.dir.frwork, 'cfg.mat'), 'cfg');

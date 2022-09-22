@@ -1,4 +1,14 @@
 function str = ffd_val_str(varargin)
+% ffd_val_str
+%
+% # Syntax
+%   str = ffd_val_str(varargin)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Parse input into field-value pairs
 S = parse_input([], varargin{:});

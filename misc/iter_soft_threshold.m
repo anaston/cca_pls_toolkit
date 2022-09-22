@@ -1,12 +1,16 @@
 function [up, failed] = iter_soft_threshold(cfg, w, c)
 % iter_soft_threshold
 %
-% Implementation for iterative soft thresholding operation in SPLS
+% Implementation for iterative soft thresholding operation in Sparse PLS.
 %
-% Syntax:  [up, failed] = iter_soft_threshold(cfg, w, c)
+% # Syntax
+%   [up, failed] = iter_soft_threshold(cfg, w, c)
 %
-% ---
-% Author: Joao Monteiro
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Joao Monteiro (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 failed = false;
 

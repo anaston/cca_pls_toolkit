@@ -1,4 +1,14 @@
 function [Xtr, Ytr, Xte, Yte] = get_data(fullrank)
+% get_data
+%
+% # Syntax
+%   [Xtr, Ytr, Xte, Yte] = get_data(fullrank)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Load data
 load(fullfile('test', 'data', 'X.mat'));

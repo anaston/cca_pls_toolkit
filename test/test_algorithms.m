@@ -1,4 +1,14 @@
 function test_algorithms
+% test_algorithms
+%
+% # Syntax
+%   test_algorithms
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 %----- Test CCA algorithm
 

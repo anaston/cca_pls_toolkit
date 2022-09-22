@@ -1,4 +1,14 @@
 function S = run_machine(cfg, trdata, tedata, featid, param)
+% run_machine
+%
+% # Syntax
+%   S = run_machine(cfg, trdata, tedata, featid, param)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 %----- Model training
 

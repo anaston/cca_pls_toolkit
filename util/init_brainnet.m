@@ -1,4 +1,14 @@
 function fname = init_brainnet(res, varargin)
+% init_brainnet
+%
+% # Syntax
+%   fname = init_brainnet(res, varargin)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Parse inputs
 S = parse_input([], varargin{:});

@@ -1,4 +1,14 @@
 function [flagcol, flagrow] = qc_data(data, varargin)
+% qc_data
+%
+% # Syntax
+%   [flagcol, flagrow] = qc_data(data, varargin)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Parse inputs and update defaults
 S = parse_input([], varargin{:});

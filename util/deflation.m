@@ -1,9 +1,16 @@
 function data = deflation(defl, data, m, w, varargin)
-% Various deflations for standard and regularized CCA/PLS
+% deflation
 %
-% For further reading, see:
-% Shawe-Taylor, Cristiani: Kernel methods for pattern analysis, 2004
-% Mihalik et al Biol Psychiatry, 2020
+% Various deflations for standard and regularized CCA/PLS.
+%
+% # Syntax
+%   data = deflation(defl, data, m, w, varargin)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 switch defl
     case 'generalized'

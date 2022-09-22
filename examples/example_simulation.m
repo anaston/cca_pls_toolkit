@@ -262,8 +262,12 @@ function example_simulation
 % ```
 %
 % ![demo_simul_wy](../figures/example_simul_weight_stemy.png)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
 
-clc
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 %----- Generate data
 

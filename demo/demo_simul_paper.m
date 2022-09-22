@@ -1,4 +1,14 @@
 function demo_simul_paper
+% demo_simul_paper
+%
+% # Syntax
+%   demo_simul_paper
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 %----- Analysis
 

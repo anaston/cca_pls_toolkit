@@ -62,7 +62,14 @@ function plot_weight(res, mod, modtype, split, func, varargin)
 %
 % ---
 % See also: [plot_paropt](../plot_paropt), [plot_proj](../plot_proj)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
 
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
+
+% Load cfg
 cfg = loadmat(res, fullfile(res.dir.frwork, 'cfg.mat'), 'cfg');
 
 % Parse input and add default settings

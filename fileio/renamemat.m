@@ -1,6 +1,14 @@
 function renamemat(cfg, fname)
 % renamemat
-%   Some description here
+%
+% # Syntax
+%   renamemat(cfg, fname)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Parse fname
 [pathstr, name, ext] = fileparts(fname);

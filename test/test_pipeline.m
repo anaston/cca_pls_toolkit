@@ -1,4 +1,14 @@
 function test_pipeline
+% test_pipeline
+%
+% # Syntax
+%   test_pipeline
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Set path for analysis
 set_path;

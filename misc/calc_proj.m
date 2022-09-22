@@ -1,4 +1,14 @@
 function P = calc_proj(data, weight, method)
+% calc_proj
+%
+% # Syntax
+%   P = calc_proj(data, weight, method)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 if exist('method', 'var') && strcmp(method, 'isnan')
     % Compute projection with missing data

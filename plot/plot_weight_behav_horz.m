@@ -1,7 +1,14 @@
 function plot_weight_behav_horz(res, weight, iweight, wfname)
 % plot_weight_behav_horz
 %
-% Syntax:  plot_weight_behav_horz(res, weight, iweight, wfname)
+% # Syntax
+%   plot_weight_behav_horz(res, weight, iweight, wfname)
+%
+%_______________________________________________________________________
+% Copyright (C) 2022 University College London
+
+% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$
 
 % Load label file
 labelfname = select_file(res, fullfile(res.dir.project, 'data'), ...
