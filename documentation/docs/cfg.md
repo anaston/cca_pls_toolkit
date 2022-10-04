@@ -5,19 +5,19 @@ Essential paths to your project, framework and processed data. The project folde
 
 *   **.project** [*path*]
   
-    full path to your project, such as 'PATH/TO/YOUR/PROJECT'
+    full path to your project, such as `'PATH/TO/YOUR/PROJECT'`
     
 *   **.frwork** [*path*]
   
     full path to your specific framework, such as
-    'PATH/TO/YOUR/PROJECT/framework/ANALYSIS_NAME'
+    `'PATH/TO/YOUR/PROJECT/framework/ANALYSIS_NAME'`
     
     analysis name is generated from machine name and framework settings, for instance, an SPLS analysis with a single holdout set (20% of the data) and 10 validation sets (20% of the optimization set) and `cfg.frwork.flag = '_TEST'` will generate the `spls_holdout1-0.20_subsamp10-0.20_TEST` folder
     
 *   **.load** [*path*]
   
     full path to your processed data, such as 
-    'PATH/TO/YOUR/PROJECT/framework/ANALYSIS_NAME/load'
+    `'PATH/TO/YOUR/PROJECT/framework/ANALYSIS_NAME/load'`
     
     it possibly includes a `preproc` folder with the results of the preprocessing (e.g., mean, std of the features and the beta coefficients from the deconfounding) and an `svd` folder with the SVD results for computational efficiency of [CCA](../background/#canonical-correlation-analysis-cca), [PCA-CCA](../background/#cca-with-pca-dimensionality-reduction-pca-cca) and [RCCA](../background/#regularized-cca-rcca)
     
@@ -73,7 +73,7 @@ hyperparameter values for grid search or number of PCA components. We strongly e
 $$
 c_x = logspace(a, b, n)
 $$
-where $c_x$ is the hyperparameter (i.e., `cfg.machine.param.L1x`), $a$ is the start of the logarithmic range (i.e., `log(cfg.machine.param.rangeL1x(1))`), $b$ is the end of the logarithmic range (i.e., `log(cfg.machine.param.rangeL2x(2))`) and $n$ is the number of values between $a$ and $b$ (i.e., `cfg.machine.param.nL1x`)
+where $c_x$ is the hyperparameter (i.e., `cfg.machine.param.L1x`), $a$ is the start of the logarithmic range (i.e., `log(cfg.machine.param.rangeL1x(1))`), $b$ is the end of the logarithmic range (i.e., `log(cfg.machine.param.rangeL1x(2))`) and $n$ is the number of values between $a$ and $b$ (i.e., `cfg.machine.param.nL1x`)
     
 *   **.param.rangeL1x, .param.rangeL1y** [*numeric array*]
   
@@ -131,10 +131,12 @@ where $c_x$ is the hyperparameter (i.e., `cfg.machine.param.PCAx`), $a$ is the s
 
     number of values in the range of hyperparameters for principal components of $\mathbf{X}$ and $\mathbf{Y}$ (for details, see `cfg.machine.param.PCAx` and `cfg.machine.param.PCAy` above)
     
-*   **.param.VARx, .param.VARy** [*int --> 0.99*]
+*   **.param.VARx, .param.VARy** [*int*]
   
     variance of data kept in the principal components during the SVD step of [CCA](../background/#canonical-correlation-analysis-cca), [PCA-CCA](../background/#cca-with-pca-dimensionality-reduction-pca-cca) or [RCCA](../background/#regularized-cca-rcca) 
-
+    
+    note that if variance is not sufficiently large, only very few (even 0 or 1) variables might be only kept
+ 
     if not provided, the function generates a linearly scaled numeric array based on the following equation, for instance, for $\mathbf{X}$:
 $$
 c_x = linspace(a, b, n)
@@ -157,11 +159,19 @@ where $c_x$ is the hyperparameter (i.e., `cfg.machine.param.VARx`), $a$ is the s
     
 *   **.svd.varx** [*float*]
   
-    variance of $\mathbf{X}$ kept during the SVD step of [CCA](../background/#canonical-correlation-analysis-cca), [PCA-CCA](../background/#cca-with-pca-dimensionality-reduction-pca-cca) or [RCCA](../background/#regularized-cca-rcca) 
+    variance of $\mathbf{X}$ kept during the SVD step of [CCA](../background/#canonical-correlation-analysis-cca), [PCA-CCA](../background/#cca-with-pca-dimensionality-reduction-pca-cca) or [RCCA](../background/#regularized-cca-rcca)
+
+    default is 1 for [CCA](../background/#canonical-correlation-analysis-cca) and 0.99 for [RCCA](../background/#regularized-cca-rcca) 
+
+    note that if variance is not sufficiently large, only very few (even 0 or 1) variables might be only kept
 
 *   **.svd.vary** [*float*]
   
     variance of $\mathbf{Y}$ kept during the SVD step of [CCA](../background/#canonical-correlation-analysis-cca), [PCA-CCA](../background/#cca-with-pca-dimensionality-reduction-pca-cca) or [RCCA](../background/#regularized-cca-rcca)
+
+    default is 1 for [CCA](../background/#canonical-correlation-analysis-cca) and 0.99 for [RCCA](../background/#regularized-cca-rcca)
+
+    note that if variance is not sufficiently large, only very few (even 0 or 1) variables might be only kept, i.e., for models with 1 output variable `cfg.machine.svd.vary = 1` should be used
 
 *   **.spls.tol** [*int --> 1e-5*]
   
@@ -272,10 +282,16 @@ filenames with full path are also defined here. We highlight that when the data 
   
     number of subjects/examples
     
-*   **.preproc** [*cell array --> {'impute', 'deconf', 'zscore'}*]
+*   **.conf** [*boolean --> False*]
+
+    defines if at least one of the data modalities should be deconfounded
+
+*   **.preproc** [*cell array --> {'impute', 'zscore'}*]
   
-    data preprocessing strategy including missing value imputation,
-    z-scoring and deconfounding
+    data preprocessing strategy including missing value imputation (`'impute'`),
+    z-scoring (`'zscore'`) and potentially deconfounding (`'deconf'`)
+
+    `'deconf'` is automatically added if `cfg.data.conf` is True
     
     of note, data preprocessing is calculated on training data and applied
     to test data if 'holdout' framework used 
@@ -295,8 +311,10 @@ filenames with full path are also defined here. We highlight that when the data 
 *   **.X.deconf, .Y.deconf** [*standard, none*]
   
     type of deconfounding
+
+    `'standard'` refers to regressing out confounds (i.e., removing confounds using regression)
     
-    'none' could be used if deconfounding is needed for the other modality
+    `'none'` could be used if deconfounding is needed for the other modality
     but not the one where 'none' is set
     
 *   **.X.nfeat, .Y.nfeat** [*int*]
@@ -357,11 +375,11 @@ case, we currently support __SGE__ or __SLURM__ scheduling systems (for details,
 
     level of verbosity to display information in the command line during the experiment
 
-    1: detailed information with including elapsed time between time sensitive operations
+    `1`: detailed information with including elapsed time between time sensitive operations
     
-    2: detailed information without elapsed time
+    `2`: detailed information without elapsed time
     
-    3: minimal information
+    `3`: minimal information
 
 *   **.seed.split**, [*char --> 'default'* or *int*]
 
