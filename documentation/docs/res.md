@@ -100,11 +100,11 @@ Computation environment with all subfields inherited from `cfg`. For further det
 
     level of verbosity to display information in the command line during the experiment
 
-    1: detailed information with including elapsed time between time sensitive operations
+    `1`: detailed information with including elapsed time between time sensitive operations
 
-    2: detailed information without elapsed time
+    `2`: detailed information without elapsed time
 
-    3: minimal information
+    `3`: minimal information
 
 *   **.seed.split**, [*char --> 'default'* or *int*]
 
