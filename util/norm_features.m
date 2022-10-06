@@ -9,7 +9,7 @@ function [mat, varargout] = norm_features(mat, scaling, norm_fun)
 %_______________________________________________________________________
 % Copyright (C) 2022 University College London
 
-% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
+% Written by Joao Monteiro, Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
 % $Id$
 
 % This file is part of CCA/PLS Toolkit.

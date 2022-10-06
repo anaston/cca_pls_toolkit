@@ -51,8 +51,8 @@ function [X, Y, wX, wY] = generate_data(nexamples, nfeatx, nfeaty, activex, acti
 %_______________________________________________________________________
 % Copyright (C) 2022 University College London
 
-% Written by Agoston Mihalik (cca-pls-toolkit@cs.ucl.ac.uk)
-% $Id$
+% Written by James Chapman (cca-pls-toolkit@cs.ucl.ac.uk)
+% $Id$ 
 
 % This file is part of CCA/PLS Toolkit.
 %
