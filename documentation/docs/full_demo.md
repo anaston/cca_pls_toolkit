@@ -219,5 +219,5 @@ plot_weight(res, 'Y', 'simul', res.frwork.split.best, 'stem', ...
 
 ![Weights of the first associative effect for modality 2 (blue: true model weights, red: weights identified by SPLS).](figures/demo_weightY_split6.png){#fig:weights2}
 
-In this demo, we had only 1 significant associative effects. In case there are multiple significant associative effects, the process for plotting the results can be repeated for each level. Here, we plotted the results of the best data split, but other data splits can be also visualized in a similar manner. For more information on different algorithms, hyperparameter optimization, default parameters or additional plotting functions, see the CCA/PLS toolkit documentation.
+In this demo, we had only 1 significant associative effect. In case there are multiple significant associative effects, the process for plotting the results can be repeated for each level. Here, we plotted the results of the best data split, but other data splits can be also visualized in a similar manner. For more information on different algorithms, hyperparameter optimization, default parameters or additional plotting functions, see the CCA/PLS toolkit documentation.
 
