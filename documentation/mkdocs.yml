@@ -1,7 +1,7 @@
 # Project information
 site_name: CCA/PLS Toolkit
 repo_name: 'CCA_PLS_toolkit'
-repo_url: 'https://github.com/anaston/cca_pls_toolkit/'
+repo_url: 'https://github.com/MLNL/cca_pls_toolkit/'
 
 # Plugins
 plugins:

@@ -3,7 +3,7 @@
 To install the CCA/PLS Toolkit, clone the repository from Github using the following command:
 
 ```Bash
-git clone https://github.com/anaston/cca_pls_toolkit
+git clone https://github.com/mlnl/cca_pls_toolkit
 ```
 
 After the toolkit is downloaded, go to the folder containing the toolkit and open MATLAB. In general, we advise you to run all commands from this toolkit folder.

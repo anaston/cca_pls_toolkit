@@ -2,7 +2,7 @@
 
 In the following, we will outline a complete demonstration of how to install the CCA/PLS toolkit, and generate some of the results that are presented in the accompanying tutorial paper ([Mihalik et al. 2022](https://doi.org/10.1016/j.bpsc.2022.07.012)). Computation time on a single machine is about 1-3 hours.  
 
-For more details, please see the in-depth online documentation of the toolkit available at [https://anaston.github.io/cca_pls_toolkit/](https://anaston.github.io/cca_pls_toolkit/).
+For more details, please see the in-depth online documentation of the toolkit available at [https://mlnl.github.io/cca_pls_toolkit/](https://mlnl.github.io/cca_pls_toolkit/).
 
 
 
@@ -11,10 +11,10 @@ For more details, please see the in-depth online documentation of the toolkit av
 First, if you have Git already installed, clone the repository from Github using the following command in a terminal window under MacOS and Linux or in a power shell window under Microsoft Windows.
 
 ```Bash
-git clone https://github.com/anaston/cca_pls_toolkit
+git clone https://github.com/mlnl/cca_pls_toolkit
 ```
 
-In case you don’t want to clone the repository via Git, you can also go to [https://github.com/anaston/cca_pls_toolkit](https://github.com/anaston/cca_pls_toolkit) and download all scripts as a zip folder and unzip into a directory of your choice.
+In case you don’t want to clone the repository via Git, you can also go to [https://github.com/mlnl/cca_pls_toolkit](https://github.com/mlnl/cca_pls_toolkit) and download all scripts as a zip folder and unzip into a directory of your choice.
 
 After the toolkit is downloaded, open MATLAB and go to the folder containing the toolkit (e.g., double-click on the toolbox folder in MATLAB). To initialize the toolkit, run the following lines in the MATLAB command window:
 
@@ -219,5 +219,5 @@ plot_weight(res, 'Y', 'simul', res.frwork.split.best, 'stem', ...
 
 ![Weights of the first associative effect for modality 2 (blue: true model weights, red: weights identified by SPLS).](figures/demo_weightY_split6.png){#fig:weights2}
 
-In this demo, we had only 1 significant associative effects. In case there are multiple significant associative effects, the process for plotting the results can be repeated for each level. Here, we plotted the results of the best data split, but other data splits can be also visualized in a similar manner. For more information on different algorithms, hyperparameter optimization, default parameters or additional plotting functions, see the CCA/PLS toolkit documentation.
+In this demo, we had only 1 significant associative effect. In case there are multiple significant associative effects, the process for plotting the results can be repeated for each level. Here, we plotted the results of the best data split, but other data splits can be also visualized in a similar manner. For more information on different algorithms, hyperparameter optimization, default parameters or additional plotting functions, see the CCA/PLS toolkit documentation.
 

@@ -24,7 +24,7 @@ For a short theoretical introduction to the CCA/PLS models, analytic frameworks 
 
 ## Documentation
 
-Our detailed documentation can be found [here](https://anaston.github.io/cca_pls_toolkit).
+Our detailed documentation can be found [here](https://MLNL.github.io/cca_pls_toolkit).
 
 ## Contributors
 

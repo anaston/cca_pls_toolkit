@@ -54,6 +54,21 @@ function [X, Y, wX, wY] = generate_data(nexamples, nfeatx, nfeaty, activex, acti
 % Written by James Chapman (cca-pls-toolkit@cs.ucl.ac.uk)
 % $Id$ 
 
+% This file is part of CCA/PLS Toolkit.
+%
+% CCA/PLS Toolkit is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% CCA/PLS Toolkit is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with CCA/PLS Toolkit. If not, see <https://www.gnu.org/licenses/>.
+
 z = normrnd(0,1,nexamples,1); %generate a random gaussian latent variable
 wX=rand(1,nfeatx); %now generate some random weights that project from the latent variable space to the data space
 wY=rand(1,nfeaty);
