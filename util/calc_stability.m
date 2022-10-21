@@ -1,11 +1,11 @@
-function [S_avg, S_square, S] = calc_stability(W, type, subtype)
+function [S_avg, S_square, S] = calc_stability(W, nsplits, type, subtype)
 % calc_stability
 %
 % Calculates the stability/similarity across weights (see Baldassare et al.
 % 2017).
 %
 % Syntax:
-%   [S_avg, S_square, S] = calc_stability(W, type, subtype)
+%   [S_avg, S_square, S] = calc_stability(W, nsplits, type, subtype)
 %
 %_______________________________________________________________________
 % Copyright (C) 2022 University College London
@@ -28,6 +28,10 @@ function [S_avg, S_square, S] = calc_stability(W, type, subtype)
 % You should have received a copy of the GNU General Public License
 % along with CCA/PLS Toolkit. If not, see <https://www.gnu.org/licenses/>.
 
+% 11/10/2022 Modified by Agoston Mihalik (am3022@cam.ac.uk)
+%   Bug fix: output NaN in correct shape if all (or all but one) splits 
+%       have NaN weights (e.g. due to SPLS not converging)
+
 if strcmp(type, 'overlap') && ~exist('subtype', 'var')
     subtype = 'corrected'; % default option
 end
@@ -42,8 +46,15 @@ else
     W(:,idnan) = []; % remove NaN
 end
 nw = size(W, 2);
-if nw == 1
-    [S_avg, S_square, S] = deal(NaN);
+if nw < 2
+    % Create NaN in correct shape
+    S_avg = NaN(1, nsplits);
+    S_square = NaN(nsplits, nsplits);
+    if nsplits < 3
+        S = NaN;
+    else
+        S = NaN(1, nsplits*(nsplits-1)/2);
+    end
     return
 end
 

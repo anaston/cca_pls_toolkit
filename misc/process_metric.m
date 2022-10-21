@@ -27,16 +27,25 @@ function S = process_metric(cfg, S, runtype)
 % You should have received a copy of the GNU General Public License
 % along with CCA/PLS Toolkit. If not, see <https://www.gnu.org/licenses/>.
 
+% 11/10/2022 Modified by Agoston Mihalik (am3022@cam.ac.uk)
+%   Add nsplits to calc_stability input and reshaping output
+
+% Number of inner/outer splits
+if strcmp(runtype, 'gridsearch')
+    nsplits = cfg.frwork.split.nin;
+else
+    nsplits = cfg.frwork.split.nout;
+end
+
 for i=1:numel(cfg.data.mod)
     m = cfg.data.mod{i}; % shorthand variable
     
     % Calculate similarity of weights
     if ismember(['simw' lower(m)], cfg.machine.metric)
         type = strsplit(cfg.machine.simw, '-'); % type of similarity measure
-        [~, sim_all] = calc_stability({S.(['w' m])}, type{:});
-        if length(sim_all) > 1
-            s = length(sim_all);
-            sim_all = reshape(sim_all(~eye(s)), s-1, s); % remove diagonal entries
+        [~, sim_all] = calc_stability({S.(['w' m])}, nsplits, type{:});
+        if nsplits > 1
+            sim_all = reshape(sim_all(~eye(nsplits)), nsplits-1, nsplits); % remove diagonal entries
         end
         sim_all = num2cell(permute(sim_all, [3 2 1]), 3);
         [S(:).(['simw' lower(m)])] = deal(sim_all{:});
@@ -53,7 +62,7 @@ for i=1:numel(cfg.data.mod)
     end
 end
 
-% Remove fields from output
+% Remove weights from output for memory efficiency
 if ~strcmp(runtype, 'main')
     S = rmfield(S, {'wX' 'wY'});
 end
