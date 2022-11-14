@@ -34,8 +34,6 @@ Please use the menu on the left to get started with the toolkit.
 
 Some of the code used in the toolkit was developed by [Joao Monteiro](https://github.com/jmmonteiro) who was a PhD student at UCL (currently a data scientist at Heni). We wish to thank members and collaborators of the [Machine Learning & Neuroimaging Laboratory](http://www.mlnl.cs.ucl.ac.uk) for testing the toolkit and providing invaluable feedback. We would particularly like to acknowledge Eliana Nicolaisen, Cemre Zor, Konstantinos Tsirlis, Taiane Ramos and Richard Nguyen.
 
-Feel free to email us if you have any feedback under [cca-pls-toolkit@cs.ucl.ac.uk](mailto:cca-pls-toolkit@cs.ucl.ac.uk).
-
 ## Acknowledgements
 
 The CCA/PLS toolkit was developed at the [__Machine Learning & Neuroimaging Laboratory (MLNL)__](http://www.mlnl.cs.ucl.ac.uk), Centre for Medical Imaging Computing, Computer Science Department, University College London, UK. The development of the toolkit was supported by the Wellcome Trust (grant number WT102845/Z/13/Z).
